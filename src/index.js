@@ -19,10 +19,10 @@ export default class ModalVideo extends React.Component {
   render () {
     return (
       <div className={this.props.isOpen ? 'js-youtube-open' : 'js-youtube-close'}>
-      	<div className="youtubePopup">
-      		<div className="youtubePopupBody">
-      			<div className="youtubePopupInner">
-      				<div className="youtubePopupIframeWrap">
+      	<div className={this.props.classNames.youtubePopup}>
+      		<div className={this.props.classNames.youtubePopupBody}>
+      			<div className={this.props.classNames.youtubePopupInner}>
+      				<div className={this.props.classNames.youtubePopupIframeWrap}>
       					<i className="fa fa-close fa-3x"></i>
       					<iframe width="460" height="230" src={this.getVideoUrl()} frameBorder="0" allowFullScreen={this.props.allowFullScreen}></iframe>
       				</div>
@@ -42,5 +42,11 @@ ModalVideo.defaultProps = {
   start: 0,
   channel: 'youtube',
   allowFullScreen: true,
-  isOpen: false
+  isOpen: false,
+  classNames:{
+    youtubePopup: 'youtubePopup',
+    youtubePopupBody: 'youtubePopupBody',
+    youtubePopupInner: 'youtubePopupInner',
+    youtubePopupIframeWrap: 'youtubePopupIframeWrap'
+  }
 }

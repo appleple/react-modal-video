@@ -71,7 +71,7 @@ var ModalVideo = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { className: this.props.isOpen ? 'js-youtube-open' : 'js-youtube-close' }, _react2.default.createElement('div', { className: 'youtubePopup' }, _react2.default.createElement('div', { className: 'youtubePopupBody' }, _react2.default.createElement('div', { className: 'youtubePopupInner' }, _react2.default.createElement('div', { className: 'youtubePopupIframeWrap' }, _react2.default.createElement('i', { className: 'fa fa-close fa-3x' }), _react2.default.createElement('iframe', { width: '460', height: '230', src: this.getVideoUrl(), frameBorder: '0', allowFullScreen: this.props.allowFullScreen }))))));
+      return _react2.default.createElement('div', { className: this.props.isOpen ? 'js-youtube-open' : 'js-youtube-close' }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopup }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupBody }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupInner }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupIframeWrap }, _react2.default.createElement('i', { className: 'fa fa-close fa-3x' }), _react2.default.createElement('iframe', { width: '460', height: '230', src: this.getVideoUrl(), frameBorder: '0', allowFullScreen: this.props.allowFullScreen }))))));
     }
   }]);
 
@@ -88,7 +88,13 @@ ModalVideo.defaultProps = {
   start: 0,
   channel: 'youtube',
   allowFullScreen: true,
-  isOpen: false
+  isOpen: false,
+  classNames: {
+    youtubePopup: 'youtubePopup',
+    youtubePopupBody: 'youtubePopupBody',
+    youtubePopupInner: 'youtubePopupInner',
+    youtubePopupIframeWrap: 'youtubePopupIframeWrap'
+  }
 };
 
 },{"react":178}],2:[function(require,module,exports){
@@ -20630,7 +20636,7 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'dJcBBY0IlKU' }),
+        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo' }),
         _react2.default.createElement(
           'button',
           { onClick: this.openModal },
