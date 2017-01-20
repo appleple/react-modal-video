@@ -1,26 +1,25 @@
-import React from 'react';
+import React from 'react'
 
 export default class ModalVideo extends React.Component {
 
   constructor () {
-    super();
+    super()
     this.state = {
-      isOpen : false
+      isOpen: false
     }
-    this.closeModal = this.closeModal.bind(this);
-    this.openModal = this.openModal.bind(this);
+    this.closeModal = this.closeModal.bind(this)
   }
 
   openModal () {
-    this.setState({isOpen:true});
+    this.setState({isOpen: true})
   }
 
   closeModal () {
-    this.setState({isOpen:false});
+    this.setState({isOpen: false})
   }
 
   componentWillReceiveProps (nextProps) {
-    this.setState({isOpen:nextProps.isOpen});
+    this.setState({isOpen: nextProps.isOpen})
   }
 
   getVideoUrl () {
@@ -39,11 +38,11 @@ export default class ModalVideo extends React.Component {
   render () {
     return (
       <div className={this.state.isOpen ? 'js-youtube-open' : 'js-youtube-close'}>
-        <div className={this.props.classNames.youtubePopup} onClick={this.closeModal}>
-          <div className={this.props.classNames.youtubePopupBody}>
+        <div className={this.props.classNames.youtubePopup}>
+          <div className={this.props.classNames.youtubePopupBody} onClick={this.closeModal}>
             <div className={this.props.classNames.youtubePopupInner}>
               <div className={this.props.classNames.youtubePopupIframeWrap}>
-                <i className='fa fa-close fa-3x' />
+                <button className={this.props.classNames.youtubePopupCloseBtn} />
                 <iframe width='460' height='230' src={this.getVideoUrl()} frameBorder='0' allowFullScreen={this.props.allowFullScreen} />
               </div>
             </div>
@@ -67,6 +66,7 @@ ModalVideo.defaultProps = {
     youtubePopup: 'youtubePopup',
     youtubePopupBody: 'youtubePopupBody',
     youtubePopupInner: 'youtubePopupInner',
-    youtubePopupIframeWrap: 'youtubePopupIframeWrap'
+    youtubePopupIframeWrap: 'youtubePopupIframeWrap',
+    youtubePopupCloseBtn: 'youtubePopupCloseBtn'
   }
 }
