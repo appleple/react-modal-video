@@ -2,35 +2,55 @@ import React from 'react';
 
 export default class ModalVideo extends React.Component {
 
-  getVideoUrl () {
-    if(!this.props.isOpen){
-      return "";
+  constructor () {
+    super();
+    this.state = {
+      isOpen : false
     }
-    const id = this.props.videoid;
-    if(this.props.channel === 'youtube'){
-      return this.getYoutubeUrl();
+    this.closeModal = this.closeModal.bind(this);
+    this.openModal = this.openModal.bind(this);
+  }
+
+  openModal () {
+    this.setState({isOpen:true});
+  }
+
+  closeModal () {
+    this.setState({isOpen:false});
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({isOpen:nextProps.isOpen});
+  }
+
+  getVideoUrl () {
+    if (!this.props.isOpen) {
+      return ''
+    }
+    if (this.props.channel === 'youtube') {
+      return this.getYoutubeUrl()
     }
   }
 
-  getYoutubeUrl() {
-    return `//www.youtube.com/embed/${this.props.videoId}?wmode=${this.props.wmode}&rel=0&autoplay=${this.props.autoPlay}&theme=${this.props.theme}&start=${this.props.start}&cc_load_policy=1&rel=0`;
+  getYoutubeUrl () {
+    return `//www.youtube.com/embed/${this.props.videoId}?wmode=${this.props.wmode}&rel=0&autoplay=${this.props.autoPlay}&theme=${this.props.theme}&start=${this.props.start}&cc_load_policy=1&rel=0`
   }
 
   render () {
     return (
-      <div className={this.props.isOpen ? 'js-youtube-open' : 'js-youtube-close'}>
-      	<div className={this.props.classNames.youtubePopup}>
-      		<div className={this.props.classNames.youtubePopupBody}>
-      			<div className={this.props.classNames.youtubePopupInner}>
-      				<div className={this.props.classNames.youtubePopupIframeWrap}>
-      					<i className="fa fa-close fa-3x"></i>
-      					<iframe width="460" height="230" src={this.getVideoUrl()} frameBorder="0" allowFullScreen={this.props.allowFullScreen}></iframe>
-      				</div>
-      			</div>
-      		</div>
-      	</div>
+      <div className={this.state.isOpen ? 'js-youtube-open' : 'js-youtube-close'}>
+        <div className={this.props.classNames.youtubePopup} onClick={this.closeModal}>
+          <div className={this.props.classNames.youtubePopupBody}>
+            <div className={this.props.classNames.youtubePopupInner}>
+              <div className={this.props.classNames.youtubePopupIframeWrap}>
+                <i className='fa fa-close fa-3x' />
+                <iframe width='460' height='230' src={this.getVideoUrl()} frameBorder='0' allowFullScreen={this.props.allowFullScreen} />
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    );
+    )
   }
 }
 
@@ -43,7 +63,7 @@ ModalVideo.defaultProps = {
   channel: 'youtube',
   allowFullScreen: true,
   isOpen: false,
-  classNames:{
+  classNames: {
     youtubePopup: 'youtubePopup',
     youtubePopupBody: 'youtubePopupBody',
     youtubePopupInner: 'youtubePopupInner',

@@ -8,6 +8,14 @@
   }
 }
 
+.js-youtube-close{
+  display: none;
+}
+
+.js-youtube-open{
+  display: block;
+}
+
 .youtubePopup {
   position: fixed;
   top: 0;
