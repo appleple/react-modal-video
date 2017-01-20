@@ -76,7 +76,7 @@ var ModalVideo = function (_React$Component) {
   }, {
     key: 'getVideoUrl',
     value: function getVideoUrl() {
-      if (!this.props.isOpen) {
+      if (!this.state.isOpen) {
         return '';
       }
       if (this.props.channel === 'youtube') {

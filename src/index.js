@@ -23,7 +23,7 @@ export default class ModalVideo extends React.Component {
   }
 
   getVideoUrl () {
-    if (!this.props.isOpen) {
+    if (!this.state.isOpen) {
       return ''
     }
     if (this.props.channel === 'youtube') {
