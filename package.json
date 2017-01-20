@@ -19,12 +19,16 @@
     "eslint-config-airbnb-base": "^11.0.1",
     "eslint-plugin-import": "^2.2.0",
     "licensify": "^3.1.2",
+    "mocha": "^3.2.0",
+    "nightmare": "^2.8.1",
+    "power-assert": "^1.4.2",
     "stringify": "^5.1.0",
     "uglifyjs": "^2.4.10",
     "watch": "^1.0.1",
-    "watchify": "^3.7.0",
-    "mocha": "^3.2.0",
-    "nightmare": "^2.8.1",
-    "power-assert": "^1.4.2"
+    "watchify": "^3.7.0"
+  },
+  "dependencies": {
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2"
   }
 }

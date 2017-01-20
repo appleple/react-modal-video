@@ -1,6 +1,6 @@
 {
   "extends": [
-    "airbnb-base"
+    # "airbnb-base"
   ],
   "env": {
     "browser": true
@@ -8,7 +8,6 @@
   "globals": {
     "document": true,
     "window": true,
-    "ACMS": true
   },
   "rules":{
     "comma-dangle":0
