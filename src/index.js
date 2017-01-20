@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 
 const settings = {
   wmode: 'transparent',
@@ -7,12 +6,15 @@ const settings = {
   autoplay: 1,
   theme: 'dark',
   start: 0,
-  channel: 'youtube'
+  channel: 'youtube',
   allowfullscreen: true
 }
 
 export default class ModalVideo extends React.Component {
   getVideoUrl () {
+    if(!this.isOpen){
+      return "";
+    }
     const id = this.props.videoid;
     if(this.props.channel === 'youtube'){
       return this.getYoutubeUrl();
@@ -24,21 +26,23 @@ export default class ModalVideo extends React.Component {
   }
 
   openModal() {
-
+    this.isOpen = true;
   }
 
-  render (){
-    <div class="js-youtube-dismiss">
-    	<div class="youtubePopup">
-    		<div class="youtubePopupBody">
-    			<div class="youtubePopupInner">
-    				<div class="youtubePopupIframeWrap">
-    					<i class="fa fa-close fa-3x"></i>
-    					<iframe width="460" height="230" src={this.getVideoUrl()} frameborder="0" {this.props.allowfullscreen}></iframe>
-    				</div>
-    			</div>
-    		</div>
-    	</div>
-    </div>
+  render () {
+    return (
+      <div className="js-youtube-dismiss">
+      	<div className="youtubePopup">
+      		<div className="youtubePopupBody">
+      			<div className="youtubePopupInner">
+      				<div className="youtubePopupIframeWrap">
+      					<i className="fa fa-close fa-3x"></i>
+      					<iframe width="460" height="230" src={this.getVideoUrl()} frameborder="0" allowfullscreen={this.props.allowfullscreen}></iframe>
+      				</div>
+      			</div>
+      		</div>
+      	</div>
+      </div>
+    );
   }
 }
