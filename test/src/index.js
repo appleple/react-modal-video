@@ -19,7 +19,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <ModalVideo channel="youtube" isOpen={this.state.isOpen} videoId="dJcBBY0IlKU"></ModalVideo>
+        <ModalVideo channel="youtube" isOpen={this.state.isOpen} videoId="L61p2uyiMSo"></ModalVideo>
         <button onClick={this.openModal}>Open</button>
       </div>
     )
