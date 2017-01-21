@@ -28,11 +28,17 @@ export default class ModalVideo extends React.Component {
     }
     if (this.props.channel === 'youtube') {
       return this.getYoutubeUrl()
+    } else if (this.props.channel === 'vimeo') {
+      return this.getVimeoUrl()
     }
   }
 
   getYoutubeUrl () {
     return `//www.youtube.com/embed/${this.props.videoId}?wmode=${this.props.wmode}&rel=0&autoplay=${this.props.autoPlay}&theme=${this.props.theme}&start=${this.props.start}&cc_load_policy=1&rel=0`
+  }
+
+  getVimeoUrl () {
+    return `//player.vimeo.com/video/${this.props.videoId}`
   }
 
   render () {
