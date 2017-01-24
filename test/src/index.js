@@ -1,25 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import ModalVideo from '../../lib/index.js';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import ModalVideo from '../../lib/index.js'
 
 class App extends React.Component {
 
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
-      isOpen : false
+      isOpen: false
     }
-    this.openModal = this.openModal.bind(this);
+    this.openModal = this.openModal.bind(this)
   }
 
   openModal () {
-    this.setState({isOpen:true});
+    this.setState({isOpen: true})
   }
 
   render () {
     return (
       <div>
-        <ModalVideo channel="youtube" isOpen={this.state.isOpen} videoId="L61p2uyiMSo"></ModalVideo>
+        <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' />
         <button onClick={this.openModal}>Open</button>
       </div>
     )
@@ -27,6 +27,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(
-    <App />,
+  <App />,
     document.getElementById('root')
-);
+)

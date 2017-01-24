@@ -49,18 +49,40 @@ var ModalVideo = function (_React$Component) {
   function ModalVideo() {
     _classCallCheck(this, ModalVideo);
 
-    return _possibleConstructorReturn(this, (ModalVideo.__proto__ || Object.getPrototypeOf(ModalVideo)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (ModalVideo.__proto__ || Object.getPrototypeOf(ModalVideo)).call(this));
+
+    _this.state = {
+      isOpen: false
+    };
+    _this.closeModal = _this.closeModal.bind(_this);
+    return _this;
   }
 
   _createClass(ModalVideo, [{
+    key: 'openModal',
+    value: function openModal() {
+      this.setState({ isOpen: true });
+    }
+  }, {
+    key: 'closeModal',
+    value: function closeModal() {
+      this.setState({ isOpen: false });
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      this.setState({ isOpen: nextProps.isOpen });
+    }
+  }, {
     key: 'getVideoUrl',
     value: function getVideoUrl() {
-      if (!this.props.isOpen) {
-        return "";
+      if (!this.state.isOpen) {
+        return '';
       }
-      var id = this.props.videoid;
       if (this.props.channel === 'youtube') {
         return this.getYoutubeUrl();
+      } else if (this.props.channel === 'vimeo') {
+        return this.getVimeoUrl();
       }
     }
   }, {
@@ -69,9 +91,14 @@ var ModalVideo = function (_React$Component) {
       return '//www.youtube.com/embed/' + this.props.videoId + '?wmode=' + this.props.wmode + '&rel=0&autoplay=' + this.props.autoPlay + '&theme=' + this.props.theme + '&start=' + this.props.start + '&cc_load_policy=1&rel=0';
     }
   }, {
+    key: 'getVimeoUrl',
+    value: function getVimeoUrl() {
+      return '//player.vimeo.com/video/' + this.props.videoId;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement('div', { className: this.props.isOpen ? 'js-youtube-open' : 'js-youtube-close' }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopup }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupBody }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupInner }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupIframeWrap }, _react2.default.createElement('i', { className: 'fa fa-close fa-3x' }), _react2.default.createElement('iframe', { width: '460', height: '230', src: this.getVideoUrl(), frameBorder: '0', allowFullScreen: this.props.allowFullScreen }))))));
+      return _react2.default.createElement('div', { className: this.state.isOpen ? 'js-youtube-open' : 'js-youtube-close' }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopup }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupBody, onClick: this.closeModal }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupInner }, _react2.default.createElement('div', { className: this.props.classNames.youtubePopupIframeWrap }, _react2.default.createElement('button', { className: this.props.classNames.youtubePopupCloseBtn }), _react2.default.createElement('iframe', { width: '460', height: '230', src: this.getVideoUrl(), frameBorder: '0', allowFullScreen: this.props.allowFullScreen }))))));
     }
   }]);
 
@@ -93,7 +120,8 @@ ModalVideo.defaultProps = {
     youtubePopup: 'youtubePopup',
     youtubePopupBody: 'youtubePopupBody',
     youtubePopupInner: 'youtubePopupInner',
-    youtubePopupIframeWrap: 'youtubePopupIframeWrap'
+    youtubePopupIframeWrap: 'youtubePopupIframeWrap',
+    youtubePopupCloseBtn: 'youtubePopupCloseBtn'
   }
 };
 

@@ -10,7 +10,8 @@
     "watch": "watch 'npm run transform' ./src/",
     "bundle": "watchify ./test/src/index.js -t babelify -o ./test/dist/index.js",
     "test": "mocha ./test/test.js --timeout 1000000",
-    "sass": "node-sass assets/scss/mvv.scss assets/css/mvv.css"
+    "sass": "node-sass assets/scss/mvv.scss assets/css/mvv.css",
+    "start": "npm run watch && npm run bundle"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",
