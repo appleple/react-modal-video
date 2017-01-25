@@ -14,13 +14,13 @@ npm install react-modal-video
 import sass file to your project
 
 ```scss
-@import 'node_modules/react-modal-video/assets/scss/mvv.scss';
+@import 'node_modules/react-modal-video/assets/scss/modal-video.scss';
 ```
 
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ModalVideo from '../../lib/index.js'
+import ModalVideo from 'react-modal-video'
 
 class App extends React.Component {
 

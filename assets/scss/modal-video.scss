@@ -1,4 +1,4 @@
-@keyframes mvv {
+@keyframes modal-video {
   from {
     opacity: 0;
   }
@@ -8,7 +8,7 @@
   }
 }
 
-@keyframes mvv-inner {
+@keyframes modal-video-inner {
   from {
     transform: translate(0, 100px);
   }
@@ -18,15 +18,15 @@
   }
 }
 
-.js-mvv-close {
+.js-modal-video-close {
   display: none;
 }
 
-.js-mvv-open {
+.js-modal-video-open {
   display: block;
 }
 
-.mvv {
+.modal-video {
   position: fixed;
   top: 0;
   left: 0;
@@ -37,10 +37,10 @@
   cursor: pointer;
   opacity: 1;
   animation-duration: .3s;
-  animation-name: mvv;
+  animation-name: modal-video;
 }
 
-.mvv-body {
+.modal-video-body {
   max-width: 940px;
   width: 100%;
   height: 100%;
@@ -48,20 +48,20 @@
   display: table;
 }
 
-.mvv-inner {
+.modal-video-inner {
   display: table-cell;
   vertical-align: middle;
   width: 100%;
   height: 100%;
 }
 
-.mvv-movie-wrap {
+.modal-video-movie-wrap {
   width: 100%;
   height: 0;
   position: relative;
   padding-bottom: 56.25%;
   animation-duration: .3s;
-  animation-name: mvv-inner;
+  animation-name: modal-video-inner;
 
   & iframe {
     position: absolute;
@@ -72,7 +72,7 @@
   }
 }
 
-.mvv-close-btn {
+.modal-video-close-btn {
   position: absolute;
   z-index: 2;
   top: -35px;

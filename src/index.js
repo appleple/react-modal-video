@@ -43,12 +43,12 @@ export default class ModalVideo extends React.Component {
 
   render () {
     return (
-      <div className={this.state.isOpen ? 'js-mvv-open' : 'js-mvv-close'}>
-        <div className={this.props.classNames.youtubePopup}>
-          <div className={this.props.classNames.youtubePopupBody} onClick={this.closeModal}>
-            <div className={this.props.classNames.youtubePopupInner}>
-              <div className={this.props.classNames.youtubePopupIframeWrap}>
-                <button className={this.props.classNames.youtubePopupCloseBtn} />
+      <div className={this.state.isOpen ? 'js-modal-video-open' : 'js-modal-video-close'}>
+        <div className={this.props.classNames.modalVideo}>
+          <div className={this.props.classNames.modalVideoBody} onClick={this.closeModal}>
+            <div className={this.props.classNames.modalVideoInner}>
+              <div className={this.props.classNames.modalVideoIframeWrap}>
+                <button className={this.props.classNames.modalVideoCloseBtn} />
                 <iframe width='460' height='230' src={this.getVideoUrl()} frameBorder='0' allowFullScreen={this.props.allowFullScreen} />
               </div>
             </div>
@@ -69,10 +69,10 @@ ModalVideo.defaultProps = {
   allowFullScreen: true,
   isOpen: false,
   classNames: {
-    youtubePopup: 'mvv',
-    youtubePopupBody: 'mvv-body',
-    youtubePopupInner: 'mvv-inner',
-    youtubePopupIframeWrap: 'mvv-movie-wrap',
-    youtubePopupCloseBtn: 'mvv-close-btn'
+    modalVideo: 'modal-video',
+    modalVideoBody: 'modal-video-body',
+    modalVideoInner: 'modal-video-inner',
+    modalVideoIframeWrap: 'modal-video-movie-wrap',
+    modalVideoCloseBtn: 'modal-video-close-btn'
   }
 }
