@@ -17,6 +17,8 @@ import sass file to your project
 @import 'node_modules/react-modal-video/assets/scss/modal-video.scss';
 ```
 
+change "isOpen" property to open and close the modal-video
+
 ```jsx
 import React from 'react'
 import ReactDOM from 'react-dom'
