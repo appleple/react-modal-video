@@ -1,4 +1,4 @@
-# modal-video.js
+# react-modal-video
 modal video viewer
 
 ## Install
