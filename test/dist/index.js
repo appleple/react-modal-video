@@ -21,6 +21,10 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
 var _reactAddonsCssTransitionGroup = require('react-addons-css-transition-group');
 
 var _reactAddonsCssTransitionGroup2 = _interopRequireDefault(_reactAddonsCssTransitionGroup);
@@ -78,6 +82,20 @@ var ModalVideo = function (_React$Component) {
       this.setState({ isOpen: nextProps.isOpen });
     }
   }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      if (this.state.isOpen) {
+        var modal = _reactDom2.default.findDOMNode(this.refs.modal);
+        modal.focus();
+      }
+    }
+  }, {
+    key: 'updateFocus',
+    value: function updateFocus(e) {
+      var modal = _reactDom2.default.findDOMNode(this.refs.modal);
+      var modalbtn = _reactDom2.default.findDOMNode(this.refs.modalbtn);
+    }
+  }, {
     key: 'getQueryString',
     value: function getQueryString(obj) {
       var url = '';
@@ -125,7 +143,6 @@ var ModalVideo = function (_React$Component) {
     value: function render() {
       var _this2 = this;
 
-      var videoUrl = this.getVideoUrl(this.props, this.props.videoId);
       var padding = this.getPadding(this.props.ratio);
       return _react2.default.createElement(_reactAddonsCssTransitionGroup2.default, {
         transitionName: this.props.classNames.modalVideoEffect,
@@ -134,7 +151,7 @@ var ModalVideo = function (_React$Component) {
       }, function () {
         if (_this2.state.isOpen) {
           return _react2.default.createElement('div', { className: _this2.props.classNames.modalVideo, tabIndex: '-1', role: 'dialog',
-            'aria-label': _this2.props.aria.openMessage, onClick: _this2.closeModal }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage }), _react2.default.createElement('iframe', { width: '460', height: '230', src: videoUrl, frameBorder: '0', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
+            'aria-label': _this2.props.aria.openMessage, onClick: _this2.closeModal, ref: 'modal', onKeyDown: _this2.updateFocus }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage, ref: 'modalbtn', onKeyDown: _this2.updateFocus }), _react2.default.createElement('iframe', { width: '460', height: '230', src: _this2.getVideoUrl(_this2.props, _this2.props.videoId), frameBorder: '0', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
         }
       }());
     }
@@ -207,7 +224,7 @@ ModalVideo.defaultProps = {
   }
 };
 
-},{"react":191,"react-addons-css-transition-group":28}],2:[function(require,module,exports){
+},{"react":191,"react-addons-css-transition-group":28,"react-dom":29}],2:[function(require,module,exports){
 (function (process){
 'use strict';
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class ModalVideo extends React.Component {
@@ -21,6 +22,18 @@ export default class ModalVideo extends React.Component {
 
   componentWillReceiveProps (nextProps) {
     this.setState({isOpen: nextProps.isOpen})
+  }
+
+  componentDidUpdate () {
+    if (this.state.isOpen) {
+      const modal = ReactDOM.findDOMNode(this.refs.modal)
+      modal.focus()
+    }
+  }
+
+  updateFocus (e) {
+    const modal = ReactDOM.findDOMNode(this.refs.modal)
+    const modalbtn = ReactDOM.findDOMNode(this.refs.modalbtn)
   }
 
   getQueryString (obj) {
@@ -62,7 +75,6 @@ export default class ModalVideo extends React.Component {
   }
 
   render () {
-    const videoUrl = this.getVideoUrl(this.props, this.props.videoId)
     const padding = this.getPadding(this.props.ratio)
     return (
       <ReactCSSTransitionGroup
@@ -74,12 +86,12 @@ export default class ModalVideo extends React.Component {
           if (this.state.isOpen) {
             return (
               <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-                aria-label={this.props.aria.openMessage} onClick={this.closeModal}>
+                aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref='modal' onKeyDown={this.updateFocus}>
                 <div className={this.props.classNames.modalVideoBody}>
                   <div className={this.props.classNames.modalVideoInner}>
                     <div className={this.props.classNames.modalVideoIframeWrap}>
-                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} />
-                      <iframe width='460' height='230' src={videoUrl} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
+                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref='modalbtn' onKeyDown={this.updateFocus} />
+                      <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
                     </div>
                   </div>
                 </div>
