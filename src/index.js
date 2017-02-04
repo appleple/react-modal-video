@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class ModalVideo extends React.Component {
 
@@ -22,57 +23,134 @@ export default class ModalVideo extends React.Component {
     this.setState({isOpen: nextProps.isOpen})
   }
 
-  getVideoUrl () {
-    if (!this.state.isOpen) {
-      return ''
+  getQueryString (obj) {
+    let url = ''
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (obj[key] !== null) {
+          url += key + '=' + obj[key] + '&'
+        }
+      }
     }
-    if (this.props.channel === 'youtube') {
-      return this.getYoutubeUrl()
-    } else if (this.props.channel === 'vimeo') {
-      return this.getVimeoUrl()
+    return url.substr(0, url.length - 1)
+  }
+
+  getYoutubeUrl (youtube, videoId) {
+    const query = this.getQueryString(youtube)
+    return '//www.youtube.com/embed/' + videoId + '?' + query
+  }
+
+  getVimeoUrl (vimeo, videoId) {
+    const query = this.getQueryString(vimeo)
+    return '//player.vimeo.com/video/' + videoId + '?' + query
+  }
+
+  getVideoUrl (opt, videoId) {
+    if (opt.channel === 'youtube') {
+      return this.getYoutubeUrl(opt.youtube, videoId)
+    } else if (opt.channel === 'vimeo') {
+      return this.getVimeoUrl(opt.vimeo, videoId)
     }
   }
 
-  getYoutubeUrl () {
-    return `//www.youtube.com/embed/${this.props.videoId}?wmode=${this.props.wmode}&rel=0&autoplay=${this.props.autoPlay}&theme=${this.props.theme}&start=${this.props.start}&cc_load_policy=1&rel=0`
-  }
-
-  getVimeoUrl () {
-    return `//player.vimeo.com/video/${this.props.videoId}`
+  getPadding (ratio) {
+    const arr = ratio.split(':')
+    const width = Number(arr[0])
+    const height = Number(arr[1])
+    const padding = height * 100 / width
+    return padding + '%'
   }
 
   render () {
+    const videoUrl = this.getVideoUrl(this.props, this.props.videoId)
+    const padding = this.getPadding(this.props.ratio)
     return (
-      <div className={this.state.isOpen ? 'js-youtube-open' : 'js-youtube-close'}>
-        <div className={this.props.classNames.youtubePopup}>
-          <div className={this.props.classNames.youtubePopupBody} onClick={this.closeModal}>
-            <div className={this.props.classNames.youtubePopupInner}>
-              <div className={this.props.classNames.youtubePopupIframeWrap}>
-                <button className={this.props.classNames.youtubePopupCloseBtn} />
-                <iframe width='460' height='230' src={this.getVideoUrl()} frameBorder='0' allowFullScreen={this.props.allowFullScreen} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ReactCSSTransitionGroup
+        transitionName={this.props.classNames.modalVideoEffect}
+        transitionEnter
+        transitionLeave
+        transitionEnterTimeout={this.props.animationSpeed}
+        transitionLeaveTimeout={this.props.animationSpeed}
+       >
+        {(() => {
+          if (this.state.isOpen) {
+            return (
+              <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
+                aria-label={this.props.aria.openMessage}>
+                <div className={this.props.classNames.modalVideoBody} onClick={this.closeModal}>
+                  <div className={this.props.classNames.modalVideoInner}>
+                    <div className={this.props.classNames.modalVideoIframeWrap}>
+                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} />
+                      <iframe width='460' height='230' src={videoUrl} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
+                    </div>
+                  </div>
+                </div>
+              </div>)
+          }
+        })()}
+      </ReactCSSTransitionGroup>
     )
   }
 }
 
 ModalVideo.defaultProps = {
-  wmode: 'transparent',
-  rel: 0,
-  autoPlay: 1,
-  theme: 'dark',
-  start: 0,
   channel: 'youtube',
-  allowFullScreen: true,
   isOpen: false,
+  youtube: {
+    autoplay: 1,
+    cc_load_policy: 1,
+    color: null,
+    controls: 1,
+    disablekb: 0,
+    enablejsapi: 0,
+    end: null,
+    fs: 1,
+    h1: null,
+    iv_load_policy: 1,
+    list: null,
+    listType: null,
+    loop: 0,
+    modestbranding: null,
+    origin: null,
+    playlist: null,
+    playsinline: null,
+    rel: 0,
+    showinfo: 1,
+    start: 0,
+    wmode: 'transparent',
+    theme: 'dark'
+  },
+  ratio: '16:9',
+  vimeo: {
+    api: false,
+    autopause: true,
+    autoplay: true,
+    byline: true,
+    callback: null,
+    color: null,
+    height: null,
+    loop: false,
+    maxheight: null,
+    maxwidth: null,
+    player_id: null,
+    portrait: true,
+    title: true,
+    width: null,
+    xhtml: false
+  },
+  allowFullScreen: true,
+  animationSpeed: 300,
   classNames: {
-    youtubePopup: 'youtubePopup',
-    youtubePopupBody: 'youtubePopupBody',
-    youtubePopupInner: 'youtubePopupInner',
-    youtubePopupIframeWrap: 'youtubePopupIframeWrap',
-    youtubePopupCloseBtn: 'youtubePopupCloseBtn'
+    modalVideoEffect: 'modal-video-effect',
+    modalVideo: 'modal-video',
+    modalVideoClose: 'modal-video-close',
+    modalVideoBody: 'modal-video-body',
+    modalVideoInner: 'modal-video-inner',
+    modalVideoIframeWrap: 'modal-video-movie-wrap',
+    modalVideoCloseBtn: 'modal-video-close-btn'
+  },
+  aria: {
+    openMessage: 'You just openned the modal video',
+    dismissBtnMessage: 'Close the modal by clicking here'
   }
 }
