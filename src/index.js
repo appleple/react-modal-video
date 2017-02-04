@@ -67,8 +67,6 @@ export default class ModalVideo extends React.Component {
     return (
       <ReactCSSTransitionGroup
         transitionName={this.props.classNames.modalVideoEffect}
-        transitionEnter
-        transitionLeave
         transitionEnterTimeout={this.props.animationSpeed}
         transitionLeaveTimeout={this.props.animationSpeed}
        >
