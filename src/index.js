@@ -74,8 +74,8 @@ export default class ModalVideo extends React.Component {
           if (this.state.isOpen) {
             return (
               <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-                aria-label={this.props.aria.openMessage}>
-                <div className={this.props.classNames.modalVideoBody} onClick={this.closeModal}>
+                aria-label={this.props.aria.openMessage} onClick={this.closeModal}>
+                <div className={this.props.classNames.modalVideoBody}>
                   <div className={this.props.classNames.modalVideoInner}>
                     <div className={this.props.classNames.modalVideoIframeWrap}>
                       <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} />

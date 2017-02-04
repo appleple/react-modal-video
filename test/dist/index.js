@@ -129,14 +129,12 @@ var ModalVideo = function (_React$Component) {
       var padding = this.getPadding(this.props.ratio);
       return _react2.default.createElement(_reactAddonsCssTransitionGroup2.default, {
         transitionName: this.props.classNames.modalVideoEffect,
-        transitionEnter: true,
-        transitionLeave: true,
         transitionEnterTimeout: this.props.animationSpeed,
         transitionLeaveTimeout: this.props.animationSpeed
       }, function () {
         if (_this2.state.isOpen) {
           return _react2.default.createElement('div', { className: _this2.props.classNames.modalVideo, tabIndex: '-1', role: 'dialog',
-            'aria-label': _this2.props.aria.openMessage }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody, onClick: _this2.closeModal }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage }), _react2.default.createElement('iframe', { width: '460', height: '230', src: videoUrl, frameBorder: '0', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
+            'aria-label': _this2.props.aria.openMessage, onClick: _this2.closeModal }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage }), _react2.default.createElement('iframe', { width: '460', height: '230', src: videoUrl, frameBorder: '0', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
         }
       }());
     }
