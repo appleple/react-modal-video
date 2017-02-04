@@ -14,7 +14,7 @@ npm install react-modal-video
 import sass file to your project
 
 ```scss
-@import 'node_modules/react-modal-video/assets/scss/modal-video.scss';
+@import 'node_modules/react-modal-video/scss/modal-video.scss';
 ```
 
 change "isOpen" property to open and close the modal-video
