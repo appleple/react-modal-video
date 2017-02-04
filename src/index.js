@@ -10,6 +10,7 @@ export default class ModalVideo extends React.Component {
       isOpen: false
     }
     this.closeModal = this.closeModal.bind(this)
+    this.updateFocus = this.updateFocus.bind(this)
   }
 
   openModal () {
@@ -34,6 +35,15 @@ export default class ModalVideo extends React.Component {
   updateFocus (e) {
     const modal = ReactDOM.findDOMNode(this.refs.modal)
     const modalbtn = ReactDOM.findDOMNode(this.refs.modalbtn)
+    if (e.keyCode === 9) {
+      e.preventDefault()
+      e.stopPropagation()
+      if (modal === document.activeElement) {
+        modalbtn.focus()
+      } else {
+        modal.focus()
+      }
+    }
   }
 
   getQueryString (obj) {

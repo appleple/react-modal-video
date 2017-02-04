@@ -63,6 +63,7 @@ var ModalVideo = function (_React$Component) {
       isOpen: false
     };
     _this.closeModal = _this.closeModal.bind(_this);
+    _this.updateFocus = _this.updateFocus.bind(_this);
     return _this;
   }
 
@@ -94,6 +95,15 @@ var ModalVideo = function (_React$Component) {
     value: function updateFocus(e) {
       var modal = _reactDom2.default.findDOMNode(this.refs.modal);
       var modalbtn = _reactDom2.default.findDOMNode(this.refs.modalbtn);
+      if (e.keyCode === 9) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (modal === document.activeElement) {
+          modalbtn.focus();
+        } else {
+          modal.focus();
+        }
+      }
     }
   }, {
     key: 'getQueryString',
