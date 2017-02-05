@@ -1,6 +1,12 @@
 # react-modal-video
-<p><img src="https://raw.github.com/appleple/react-modal-video/master/assets/logo.png"></p>
-modal video viewer
+React Modal Video Component
+
+## Features
+
+- Not affected by dom structure.
+- Beautiful transition
+- Accessible for keyboard navigation and screen readers.
+- Rich options for youtube API and Vimeo API
 
 ## Install
 
