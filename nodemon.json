@@ -1,0 +1,13 @@
+{
+    "execMap": {
+        "js": "node",
+        "jsx": "jsx {{filename}} | node"
+    },
+    "ext": "jsx scss",
+    "ignore": [
+        "test/dist",
+        "node_modules",
+        "lib"
+    ],
+    "verbose": true
+}
