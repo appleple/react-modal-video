@@ -8,7 +8,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "js": "npm run babel && npm run browserify",
-    "babel": "babel ./src/index.js --out-file ./lib/index.js",
+    "babel": "babel ./src/index.jsx --out-file ./lib/index.js",
     "browserify": "browserify ./test/src/index.js -t babelify -o ./test/dist/index.js",
     "sass": "node-sass ./scss/modal-video.scss ./css/modal-video.min.css --output-style compressed",
     "watch": "nodemon --ignore 'test/**/*.js' -x \"npm run js && npm run sass\"",
