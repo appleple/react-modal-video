@@ -29,7 +29,7 @@ import sass file to your project
 
 change "isOpen" property to open and close the modal-video
 
-```jsx
+```js
 import React from 'react'
 import ReactDOM from 'react-dom'
 import ModalVideo from 'react-modal-video'
