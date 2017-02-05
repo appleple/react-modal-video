@@ -8,6 +8,9 @@ React Modal Video Component
 - Accessible for keyboard navigation and screen readers.
 - Rich options for youtube API and Vimeo API
 
+## Demo
+[http://rawgit.com/appleple/react-modal-video/master/test/](http://rawgit.com/appleple/react-modal-video/master/test/)
+
 ## Install
 
 ### npm
