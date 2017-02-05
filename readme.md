@@ -1,4 +1,5 @@
 # react-modal-video
+<img src="https://raw.github.com/appleple/react-modal-video/master/assets/logo.png">
 modal video viewer
 
 ## Install
@@ -54,6 +55,217 @@ ReactDOM.render(
 )
 ```
 
+## Options
+
+- About YouTube options, please refer to https://developers.google.com/youtube/player_parameters?hl=en
+- About Vimeo options, please refer to https://developer.vimeo.com/apis/oembed
+
+<table style="min-width:100%;">
+	<tbody><tr>
+		<th colspan="2">properties</th>
+		<th>default</th>
+	</tr>
+	<tr>
+		<td colspan="2">channel</td>
+		<td>'youtube'</td>
+	</tr>
+	<tr>
+		<td rowspan="22">youtube</td>
+		<td>autoplay</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>cc_load_policy</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>controls</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>disablekb</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>enablejsapi</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>end</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>fs</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>h1</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>iv_load_policy</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>list</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>listType</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>loop</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>modestbranding</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>origin</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>playlist</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>playsinline</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>rel</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>showinfo</td>
+		<td>1</td>
+	</tr>
+	<tr>
+		<td>start</td>
+		<td>0</td>
+	</tr>
+	<tr>
+		<td>wmode</td>
+		<td>'transparent'</td>
+	</tr>
+	<tr>
+		<td>theme</td>
+		<td>'dark'</td>
+	</tr>
+	<tr>
+		<td rowspan="15">vimeo</td>
+		<td>api</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>autopause</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>autoplay</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>byline</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>callback</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>color</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>height</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>loop</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td>maxheight</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>maxwidth</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>player_id</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>portrait</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>title</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td>width</td>
+		<td>null</td>
+	</tr>
+	<tr>
+		<td>xhtml</td>
+		<td>false</td>
+	</tr>
+	<tr>
+		<td colspan="2">ratio</td>
+		<td>'16:9'</td>
+	</tr>
+	<tr>
+		<td colspan="2">allowFullScreen</td>
+		<td>true</td>
+	</tr>
+	<tr>
+		<td colspan="2">animationSpeed</td>
+		<td>300</td>
+	</tr>
+	<tr>
+		<td rowspan="6">classNames</td>
+		<td>modalVideo</td>
+		<td>'modal-video'</td>
+	</tr>
+	<tr>
+		<td>modalVideoClose</td>
+		<td>'modal-video-close'</td>
+	</tr>
+	<tr>
+		<td>modalVideoBody</td>
+		<td>'modal-video-body'</td>
+	</tr>
+	<tr>
+		<td>modalVideoInner</td>
+		<td>'modal-video-inner'</td>
+	</tr>
+	<tr>
+		<td>modalVideoIframeWrap</td>
+		<td>'modal-video-movie-wrap'</td>
+	</tr>
+	<tr>
+		<td>modalVideoCloseBtn</td>
+		<td>'modal-video-close-btn'</td>
+	</tr>
+	<tr>
+		<td rowspan="2">aria</td>
+		<td>openMessage</td>
+		<td>'You just openned the modal video'</td>
+	</tr>
+	<tr>
+		<td>dismissBtnMessage</td>
+		<td>'Close the modal by clicking here'</td>
+	</tr>
+</tbody></table>
 
 ## Licence
 [MIT](https://github.com/appleple/modal-video.js/blob/master/LICENSE)
