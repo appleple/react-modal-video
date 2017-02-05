@@ -22847,8 +22847,8 @@ var App = function (_React$Component) {
         _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo' }),
         _react2.default.createElement(
           'button',
-          { onClick: this.openModal },
-          'Open'
+          { onClick: this.openModal, className:'btn btn-orange'},
+          'Open Video'
         )
       );
     }
