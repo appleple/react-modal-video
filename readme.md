@@ -1,5 +1,5 @@
 # react-modal-video
-<img src="https://raw.github.com/appleple/react-modal-video/master/assets/logo.png">
+<p><img src="https://raw.github.com/appleple/react-modal-video/master/assets/logo.png"></p>
 modal video viewer
 
 ## Install
