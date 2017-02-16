@@ -19,6 +19,9 @@ export default class ModalVideo extends React.Component {
 
   closeModal () {
     this.setState({isOpen: false})
+    if (this.props.onClose === 'function') {
+      this.props.onClose();
+    }
   }
 
   componentWillReceiveProps (nextProps) {

@@ -76,6 +76,9 @@ var ModalVideo = function (_React$Component) {
     key: 'closeModal',
     value: function closeModal() {
       this.setState({ isOpen: false });
+      if (this.props.onClose === 'function') {
+        this.props.onClose();
+      }
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -22841,10 +22844,14 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo' }),
+        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo', onClose: function onClose() {
+            return _this2.setState({ isOpen: false });
+          } }),
         _react2.default.createElement(
           'button',
           { onClick: this.openModal },
