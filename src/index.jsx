@@ -1,11 +1,10 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 export default class ModalVideo extends React.Component {
 
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       isOpen: false
     }
@@ -30,21 +29,18 @@ export default class ModalVideo extends React.Component {
 
   componentDidUpdate () {
     if (this.state.isOpen) {
-      const modal = ReactDOM.findDOMNode(this.refs.modal)
-      modal.focus()
+      this.modal.focus()
     }
   }
 
   updateFocus (e) {
-    const modal = ReactDOM.findDOMNode(this.refs.modal)
-    const modalbtn = ReactDOM.findDOMNode(this.refs.modalbtn)
     if (e.keyCode === 9) {
       e.preventDefault()
       e.stopPropagation()
-      if (modal === document.activeElement) {
-        modalbtn.focus()
+      if (this.modal === document.activeElement) {
+        this.modalbtn.focus()
       } else {
-        modal.focus()
+        this.modal.focus()
       }
     }
   }
@@ -102,11 +98,11 @@ export default class ModalVideo extends React.Component {
           if (this.state.isOpen) {
             return (
               <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-                aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref='modal' onKeyDown={this.updateFocus}>
+                aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => {this.modal = node;}} onKeyDown={this.updateFocus}>
                 <div className={this.props.classNames.modalVideoBody}>
                   <div className={this.props.classNames.modalVideoInner}>
                     <div className={this.props.classNames.modalVideoIframeWrap} style={style}>
-                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref='modalbtn' onKeyDown={this.updateFocus} />
+                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => {this.modalbtn = node;}} onKeyDown={this.updateFocus} />
                       <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
                     </div>
                   </div>
