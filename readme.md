@@ -229,9 +229,13 @@ ReactDOM.render(
 		<td>false</td>
 	</tr>
 	<tr>
-        <td>youku</td>
+        <td rowspan="2">youku</td>
         <td>autoplay</td>
         <td>1</td>
+    </tr>
+	<tr>
+        <td>show_related</td>
+        <td>0</td>
     </tr>
 	<tr>
 		<td colspan="2">ratio</td>

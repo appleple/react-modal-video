@@ -169,6 +169,7 @@ ModalVideo.defaultProps = {
   },
   youku: {
       autoplay: 1,
+      show_related: 0
   },
   allowFullScreen: true,
   animationSpeed: 300,
