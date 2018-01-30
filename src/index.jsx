@@ -67,11 +67,18 @@ export default class ModalVideo extends React.Component {
     return '//player.vimeo.com/video/' + videoId + '?' + query
   }
 
+    getYoukuUrl (youku, videoId) {
+    const query = this.getQueryString(youku)
+    return '//player.youku.com/embed/' + videoId + '?' + query
+  }
+
   getVideoUrl (opt, videoId) {
     if (opt.channel === 'youtube') {
       return this.getYoutubeUrl(opt.youtube, videoId)
     } else if (opt.channel === 'vimeo') {
       return this.getVimeoUrl(opt.vimeo, videoId)
+    } else if (opt.channel === 'youku') {
+      return this.getYoukuUrl(opt.youku, videoId)
     }
   }
 
@@ -160,6 +167,10 @@ ModalVideo.defaultProps = {
     title: true,
     width: null,
     xhtml: false
+  },
+  youku: {
+      autoplay: 1,
+      show_related: 0
   },
   allowFullScreen: true,
   animationSpeed: 300,

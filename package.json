@@ -31,15 +31,18 @@
     "mocha": "^3.2.0",
     "nightmare": "^2.8.1",
     "node-sass": "^4.3.0",
+    "np": "^2.18.3",
     "npm-run-all": "^4.0.1",
     "power-assert": "^1.4.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-transition-group": "^2.2.1",
     "stringify": "^5.1.0",
     "uglify-js": "^2.7.5",
     "watch": "^1.0.1",
     "watchify": "^3.7.0"
   },
   "peerDependencies": {
-    "np": "^2.18.3",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-transition-group": "^2.2.1"

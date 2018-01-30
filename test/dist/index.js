@@ -127,12 +127,20 @@ var ModalVideo = function (_React$Component) {
       return '//player.vimeo.com/video/' + videoId + '?' + query;
     }
   }, {
+    key: 'getYoukuUrl',
+    value: function getYoukuUrl(youku, videoId) {
+      var query = this.getQueryString(youku);
+      return '//player.youku.com/embed/' + videoId + '?' + query;
+    }
+  }, {
     key: 'getVideoUrl',
     value: function getVideoUrl(opt, videoId) {
       if (opt.channel === 'youtube') {
         return this.getYoutubeUrl(opt.youtube, videoId);
       } else if (opt.channel === 'vimeo') {
         return this.getVimeoUrl(opt.vimeo, videoId);
+      } else if (opt.channel === 'youku') {
+        return this.getYoukuUrl(opt.youku, videoId);
       }
     }
   }, {
@@ -220,6 +228,10 @@ ModalVideo.defaultProps = {
     title: true,
     width: null,
     xhtml: false
+  },
+  youku: {
+    autoplay: 1,
+    show_related: 0
   },
   allowFullScreen: true,
   animationSpeed: 300,
@@ -19930,7 +19942,8 @@ var App = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
 
     _this.state = {
-      isOpen: false
+      isOpen: false,
+      isOpenYouku: false
     };
     _this.openModal = _this.openModal.bind(_this);
     return _this;
@@ -19955,7 +19968,22 @@ var App = function (_React$Component) {
         _react2.default.createElement(
           'button',
           { onClick: this.openModal },
-          'Open'
+          'Open youtube'
+        ),
+        _react2.default.createElement(_index2.default, {
+          channel: 'youku',
+          isOpen: this.state.isOpenYouku,
+          videoId: 'XMTczNjgzMDYwNA=',
+          onClose: function onClose() {
+            return _this2.setState({ isOpenYouku: false });
+          }
+        }),
+        _react2.default.createElement(
+          'button',
+          { onClick: function onClick() {
+              return _this2.setState({ isOpenYouku: true });
+            } },
+          'Open youku'
         )
       );
     }
