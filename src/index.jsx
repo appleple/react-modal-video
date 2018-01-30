@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-transition-group/CSSTransition';
 
 export default class ModalVideo extends React.Component {
 
@@ -98,25 +98,26 @@ export default class ModalVideo extends React.Component {
     return (
       <ReactCSSTransitionGroup
         transitionName={this.props.classNames.modalVideoEffect}
-        transitionEnterTimeout={this.props.animationSpeed}
-        transitionLeaveTimeout={this.props.animationSpeed}
+        timeout={this.props.animationSpeed}
        >
-        {(() => {
-          if (this.state.isOpen) {
-            return (
-              <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-                aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => {this.modal = node;}} onKeyDown={this.updateFocus}>
-                <div className={this.props.classNames.modalVideoBody}>
-                  <div className={this.props.classNames.modalVideoInner}>
-                    <div className={this.props.classNames.modalVideoIframeWrap} style={style}>
-                      <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => {this.modalbtn = node;}} onKeyDown={this.updateFocus} />
-                      <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
-                    </div>
+        {() => {
+          if (!this.state.isOpen) {
+            return null;
+          }
+
+          return (
+            <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
+              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => {this.modal = node;}} onKeyDown={this.updateFocus}>
+              <div className={this.props.classNames.modalVideoBody}>
+                <div className={this.props.classNames.modalVideoInner}>
+                  <div className={this.props.classNames.modalVideoIframeWrap} style={style}>
+                    <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => {this.modalbtn = node;}} onKeyDown={this.updateFocus} />
+                    <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
                   </div>
                 </div>
-              </div>)
-          }
-        })()}
+              </div>
+            </div>)
+        }}
       </ReactCSSTransitionGroup>
     )
   }
