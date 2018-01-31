@@ -84,7 +84,7 @@ var ModalVideo = function (_React$Component) {
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
-      if (this.state.isOpen) {
+      if (this.state.isOpen && this.modal) {
         this.modal.focus();
       }
     }
@@ -163,7 +163,8 @@ var ModalVideo = function (_React$Component) {
 
       return _react2.default.createElement(_CSSTransition2.default, {
         transitionName: this.props.classNames.modalVideoEffect,
-        timeout: this.props.animationSpeed
+        transitionEnterTimeout: 0,
+        transitionLeaveTimeout: this.props.animationSpeed
       }, function () {
         if (!_this2.state.isOpen) {
           return null;

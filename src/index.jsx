@@ -28,8 +28,8 @@ export default class ModalVideo extends React.Component {
   }
 
   componentDidUpdate () {
-    if (this.state.isOpen) {
-      this.modal.focus()
+    if (this.state.isOpen && this.modal) {
+      this.modal.focus();
     }
   }
 
@@ -98,7 +98,8 @@ export default class ModalVideo extends React.Component {
     return (
       <ReactCSSTransitionGroup
         transitionName={this.props.classNames.modalVideoEffect}
-        timeout={this.props.animationSpeed}
+        transitionEnterTimeout={this.props.animationSpeed}
+        transitionLeaveTimeout={this.props.animationSpeed}
        >
         {() => {
           if (!this.state.isOpen) {
