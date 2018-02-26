@@ -42,7 +42,7 @@ $backdrop-color: rgba(0, 0, 0, .5);
 	transition: opacity $animation-speed $animation-function;
 }
 
-.modal-video-effect-exit {
+.modal-video-effect-leave {
 	opacity: 0;
 
 	& .modal-video-movie-wrap {
