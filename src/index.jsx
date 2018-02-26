@@ -1,9 +1,9 @@
 import React from 'react'
-import ReactCSSTransitionGroup from 'react-transition-group/CSSTransition';
+import CSSTransition from 'react-transition-group/CSSTransition';
 
 export default class ModalVideo extends React.Component {
 
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       isOpen: false
@@ -12,28 +12,28 @@ export default class ModalVideo extends React.Component {
     this.updateFocus = this.updateFocus.bind(this)
   }
 
-  openModal () {
-    this.setState({isOpen: true})
+  openModal() {
+    this.setState({ isOpen: true })
   }
 
-  closeModal () {
-    this.setState({isOpen: false})
+  closeModal() {
+    this.setState({ isOpen: false })
     if (typeof this.props.onClose === 'function') {
       this.props.onClose();
     }
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({isOpen: nextProps.isOpen})
+  componentWillReceiveProps(nextProps) {
+    this.setState({ isOpen: nextProps.isOpen })
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.state.isOpen && this.modal) {
       this.modal.focus();
     }
   }
 
-  updateFocus (e) {
+  updateFocus(e) {
     if (e.keyCode === 9) {
       e.preventDefault()
       e.stopPropagation()
@@ -45,7 +45,7 @@ export default class ModalVideo extends React.Component {
     }
   }
 
-  getQueryString (obj) {
+  getQueryString(obj) {
     let url = ''
     for (var key in obj) {
       if (obj.hasOwnProperty(key)) {
@@ -57,22 +57,22 @@ export default class ModalVideo extends React.Component {
     return url.substr(0, url.length - 1)
   }
 
-  getYoutubeUrl (youtube, videoId) {
+  getYoutubeUrl(youtube, videoId) {
     const query = this.getQueryString(youtube)
     return '//www.youtube.com/embed/' + videoId + '?' + query
   }
 
-  getVimeoUrl (vimeo, videoId) {
+  getVimeoUrl(vimeo, videoId) {
     const query = this.getQueryString(vimeo)
     return '//player.vimeo.com/video/' + videoId + '?' + query
   }
 
-    getYoukuUrl (youku, videoId) {
+  getYoukuUrl(youku, videoId) {
     const query = this.getQueryString(youku)
     return '//player.youku.com/embed/' + videoId + '?' + query
   }
 
-  getVideoUrl (opt, videoId) {
+  getVideoUrl(opt, videoId) {
     if (opt.channel === 'youtube') {
       return this.getYoutubeUrl(opt.youtube, videoId)
     } else if (opt.channel === 'vimeo') {
@@ -82,7 +82,7 @@ export default class ModalVideo extends React.Component {
     }
   }
 
-  getPadding (ratio) {
+  getPadding(ratio) {
     const arr = ratio.split(':')
     const width = Number(arr[0])
     const height = Number(arr[1])
@@ -90,17 +90,16 @@ export default class ModalVideo extends React.Component {
     return padding + '%'
   }
 
-  render () {
+  render() {
     const style = {
       paddingBottom: this.getPadding(this.props.ratio)
     }
 
     return (
-      <ReactCSSTransitionGroup
-        transitionName={this.props.classNames.modalVideoEffect}
-        transitionEnterTimeout={this.props.animationSpeed}
-        transitionLeaveTimeout={this.props.animationSpeed}
-       >
+      <CSSTransition
+        classNames={this.props.classNames.modalVideoEffect}
+        timeout={this.props.animationSpeed}
+      >
         {() => {
           if (!this.state.isOpen) {
             return null;
@@ -108,18 +107,18 @@ export default class ModalVideo extends React.Component {
 
           return (
             <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => {this.modal = node;}} onKeyDown={this.updateFocus}>
+              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => { this.modal = node; }} onKeyDown={this.updateFocus}>
               <div className={this.props.classNames.modalVideoBody}>
                 <div className={this.props.classNames.modalVideoInner}>
                   <div className={this.props.classNames.modalVideoIframeWrap} style={style}>
-                    <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => {this.modalbtn = node;}} onKeyDown={this.updateFocus} />
+                    <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => { this.modalbtn = node; }} onKeyDown={this.updateFocus} />
                     <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
                   </div>
                 </div>
               </div>
             </div>)
         }}
-      </ReactCSSTransitionGroup>
+      </CSSTransition>
     )
   }
 }
@@ -170,8 +169,8 @@ ModalVideo.defaultProps = {
     xhtml: false
   },
   youku: {
-      autoplay: 1,
-      show_related: 0
+    autoplay: 1,
+    show_related: 0
   },
   allowFullScreen: true,
   animationSpeed: 300,
