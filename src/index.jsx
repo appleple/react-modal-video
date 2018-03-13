@@ -23,6 +23,20 @@ export default class ModalVideo extends React.Component {
     }
   }
 
+  keydownHandler(e) {
+    if (e.keyCode === 27) {
+      this.setState({ isOpen: false })
+    }
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.keydownHandler.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydownHandler);
+  }
+
   componentWillReceiveProps (nextProps) {
     this.setState({isOpen: nextProps.isOpen})
   }
