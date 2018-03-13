@@ -162,9 +162,8 @@ var ModalVideo = function (_React$Component) {
       };
 
       return _react2.default.createElement(_CSSTransition2.default, {
-        transitionName: this.props.classNames.modalVideoEffect,
-        transitionEnterTimeout: 0,
-        transitionLeaveTimeout: this.props.animationSpeed
+        classNames: this.props.classNames.modalVideoEffect,
+        timeout: this.props.animationSpeed
       }, function () {
         if (!_this2.state.isOpen) {
           return null;
