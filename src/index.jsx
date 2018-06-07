@@ -3,7 +3,7 @@ import CSSTransition from 'react-transition-group/CSSTransition';
 
 export default class ModalVideo extends React.Component {
 
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
       isOpen: false
@@ -12,28 +12,42 @@ export default class ModalVideo extends React.Component {
     this.updateFocus = this.updateFocus.bind(this)
   }
 
-  openModal() {
-    this.setState({ isOpen: true })
+  openModal () {
+    this.setState({isOpen: true})
   }
 
-  closeModal() {
-    this.setState({ isOpen: false })
+  closeModal () {
+    this.setState({isOpen: false})
     if (typeof this.props.onClose === 'function') {
       this.props.onClose();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ isOpen: nextProps.isOpen })
+  keydownHandler(e) {
+    if (e.keyCode === 27) {
+      this.setState({ isOpen: false })
+    }
   }
 
-  componentDidUpdate() {
+  componentDidMount() {
+    document.addEventListener('keydown', this.keydownHandler.bind(this), false);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.keydownHandler);
+  }
+
+  componentWillReceiveProps (nextProps) {
+    this.setState({isOpen: nextProps.isOpen})
+  }
+
+  componentDidUpdate () {
     if (this.state.isOpen && this.modal) {
       this.modal.focus();
     }
   }
 
-  updateFocus(e) {
+  updateFocus (e) {
     if (e.keyCode === 9) {
       e.preventDefault()
       e.stopPropagation()
@@ -45,7 +59,7 @@ export default class ModalVideo extends React.Component {
     }
   }
 
-  getQueryString(obj) {
+  getQueryString (obj) {
     let url = ''
     for (var key in obj) {
       if (obj.hasOwnProperty(key)) {
