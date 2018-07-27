@@ -77,6 +77,23 @@ var ModalVideo = function (_React$Component) {
       }
     }
   }, {
+    key: 'keydownHandler',
+    value: function keydownHandler(e) {
+      if (e.keyCode === 27) {
+        this.closeModal();
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.addEventListener('keydown', this.keydownHandler.bind(this), false);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      document.removeEventListener('keydown', this.keydownHandler);
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       this.setState({ isOpen: nextProps.isOpen });
