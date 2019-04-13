@@ -30,11 +30,11 @@ export default class ModalVideo extends React.Component {
   }
 
   componentDidMount() {
-    document.addEventListener('keydown', this.keydownHandler.bind(this), false);
+    document.addEventListener('keydown', this.keydownHandler.bind(this));
   }
 
   componentWillUnmount() {
-    document.removeEventListener('keydown', this.keydownHandler);
+    document.removeEventListener('keydown', this.keydownHandler.bind(this));
   }
 
   componentWillReceiveProps (nextProps) {
