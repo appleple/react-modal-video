@@ -37,8 +37,8 @@ export default class ModalVideo extends React.Component {
     document.removeEventListener('keydown', this.keydownHandler.bind(this));
   }
 
-  componentWillReceiveProps (nextProps) {
-    this.setState({isOpen: nextProps.isOpen})
+  static getDerivedStateFromProps(props) {
+    return { isOpen: props.isOpen };
   }
 
   componentDidUpdate () {
