@@ -238,6 +238,11 @@ ReactDOM.render(
         <td>0</td>
     </tr>
 	<tr>
+        <td rowspan="1">custom</td>
+        <td>url</td>
+        <td>MP4 URL</td>
+    </tr>
+	<tr>
 		<td colspan="2">ratio</td>
 		<td>'16:9'</td>
 	</tr>

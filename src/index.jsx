@@ -93,6 +93,8 @@ export default class ModalVideo extends React.Component {
       return this.getVimeoUrl(opt.vimeo, videoId)
     } else if (opt.channel === 'youku') {
       return this.getYoukuUrl(opt.youku, videoId)
+    } else if (opt.channel === 'custom') {
+      return opt.url
     }
   }
 
