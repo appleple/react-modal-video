@@ -188,7 +188,7 @@ var ModalVideo = function (_React$Component) {
             _this2.modal = node;
           }, onKeyDown: _this2.updateFocus }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap, style: style }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage, ref: function ref(node) {
             _this2.modalbtn = node;
-          }, onKeyDown: _this2.updateFocus }), _react2.default.createElement('video', { width: '460', height: '230', src: _this2.getVideoUrl(_this2.props, _this2.props.videoId), frameBorder: '0', tabIndex: '-1' })))));
+          }, onKeyDown: _this2.updateFocus }), _react2.default.createElement('video', { controls: true, autoplay: true, width: '460', height: '230', src: _this2.getVideoUrl(_this2.props, _this2.props.videoId), frameBorder: '0', tabIndex: '-1' })))));
       });
     }
   }], [{
