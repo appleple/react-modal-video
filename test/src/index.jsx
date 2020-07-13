@@ -1,6 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import YouTube from 'react-youtube'
 import ModalVideo from '../../lib/index.js'
 
 class App extends React.Component {
@@ -23,9 +22,7 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' onClose={() => this.setState({isOpen: false})}>
-          <YouTube videoId='L61p2uyiMSo' />
-        </ModalVideo>
+        <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' onClose={() => this.setState({isOpen: false})} />
         <button onClick={this.openModal}>Open youtube</button>
         
         <ModalVideo
