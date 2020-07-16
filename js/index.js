@@ -46,10 +46,14 @@ var App = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_reactModalVideo2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo' }),
+        _react2.default.createElement(_reactModalVideo2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo', youtube: { mute: 1, autoplay: 1 }, onClose: function onClose() {
+            return _this2.setState({ isOpen: false });
+          } }),
         _react2.default.createElement(
           'button',
           { className: 'btn btn-orange', onClick: this.openModal },
