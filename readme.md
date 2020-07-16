@@ -168,6 +168,10 @@ ReactDOM.render(
 		<td>'dark'</td>
 	</tr>
 	<tr>
+		<td>mute</td>
+		<td>0</td>
+	</tr>
+	<tr>
 		<td rowspan="15">vimeo</td>
 		<td>api</td>
 		<td>false</td>
