@@ -130,7 +130,7 @@ export default class ModalVideo extends React.Component {
                     <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => { this.modalbtn = node; }} onKeyDown={this.updateFocus} />
                     {
                       this.props.children ||
-                      <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allow={'autoplay'} allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
+                      <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'} allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
                     }
                   </div>
                 </div>
@@ -167,7 +167,8 @@ ModalVideo.defaultProps = {
     showinfo: 1,
     start: 0,
     wmode: 'transparent',
-    theme: 'dark'
+    theme: 'dark',
+    mute: 0
   },
   ratio: '16:9',
   vimeo: {

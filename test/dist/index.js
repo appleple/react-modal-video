@@ -188,7 +188,7 @@ var ModalVideo = function (_React$Component) {
             _this2.modal = node;
           }, onKeyDown: _this2.updateFocus }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this2.props.classNames.modalVideoIframeWrap, style: style }, _react2.default.createElement('button', { className: _this2.props.classNames.modalVideoCloseBtn, 'aria-label': _this2.props.aria.dismissBtnMessage, ref: function ref(node) {
             _this2.modalbtn = node;
-          }, onKeyDown: _this2.updateFocus }), _this2.props.children || _react2.default.createElement('iframe', { width: '460', height: '230', src: _this2.getVideoUrl(_this2.props, _this2.props.videoId), frameBorder: '0', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
+          }, onKeyDown: _this2.updateFocus }), _this2.props.children || _react2.default.createElement('iframe', { width: '460', height: '230', src: _this2.getVideoUrl(_this2.props, _this2.props.videoId), frameBorder: '0', allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowFullScreen: _this2.props.allowFullScreen, tabIndex: '-1' })))));
       });
     }
   }], [{
@@ -228,7 +228,8 @@ ModalVideo.defaultProps = {
     showinfo: 1,
     start: 0,
     wmode: 'transparent',
-    theme: 'dark'
+    theme: 'dark',
+    mute: 0
   },
   ratio: '16:9',
   vimeo: {
@@ -31128,13 +31129,23 @@ var App = function (_React$Component) {
       return _react2.default.createElement(
         'div',
         null,
-        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo', onClose: function onClose() {
+        _react2.default.createElement(_index2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo', youtube: { mute: 1, autoplay: 1 }, onClose: function onClose() {
             return _this2.setState({ isOpen: false });
           } }),
         _react2.default.createElement(
           'button',
           { onClick: this.openModal },
-          'Open youtube'
+          'Open YouTube'
+        ),
+        _react2.default.createElement(_index2.default, { channel: 'vimeo', isOpen: this.state.isOpenVimeo, videoId: '336257407', onClose: function onClose() {
+            return _this2.setState({ isOpenVimeo: false });
+          } }),
+        _react2.default.createElement(
+          'button',
+          { onClick: function onClick() {
+              return _this2.setState({ isOpenVimeo: true });
+            } },
+          'Open Vimeo'
         ),
         _react2.default.createElement(_index2.default, {
           channel: 'youku',
