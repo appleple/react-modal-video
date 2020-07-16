@@ -79,7 +79,7 @@ ReactDOM.render(
 		<td>'youtube'</td>
 	</tr>
 	<tr>
-		<td rowspan="22">youtube</td>
+		<td rowspan="23">youtube</td>
 		<td>autoplay</td>
 		<td>1</td>
 	</tr>
