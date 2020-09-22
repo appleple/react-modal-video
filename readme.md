@@ -26,7 +26,30 @@ import sass file to your project
 ```scss
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
 ```
+### Functional Implementation with Hooks
 
+```jsx
+import React,{useState} from 'react'
+import ReactDOM from 'react-dom'
+import ModalVideo from 'react-modal-video'
+
+const App = () => {
+
+	const [isOpen, setOpen] = useState(false)
+
+	return (
+		<ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
+
+		<button className="btn-primary" onClick={()=> setOpen(true)}>VIEW DEMO</button>
+	)
+}
+
+ReactDOM.render(
+  <App />,
+    document.getElementById('root')
+)
+```
+### Class Implementation
 change "isOpen" property to open and close the modal-video
 
 ```jsx
