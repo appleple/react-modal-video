@@ -49,7 +49,7 @@ var App = function (_React$Component) {
       var _this2 = this;
 
       return _react2.default.createElement(
-        'div',
+        _react2.default.Fragment,
         null,
         _react2.default.createElement(_reactModalVideo2.default, { channel: 'youtube', isOpen: this.state.isOpen, videoId: 'L61p2uyiMSo', youtube: { mute: 1, autoplay: 1 }, onClose: function onClose() {
             return _this2.setState({ isOpen: false });

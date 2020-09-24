@@ -61,6 +61,31 @@
 </code></pre>
 </div>
 
+<h3 id="hooks">Functional Implementation with Hooks</h3>
+<div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,{</span><span class="nx">useState</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">ReactDOM</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">ModalVideo</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-modal-video</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">App</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">isOpen</span><span class="p">,</span> <span class="nx">setOpen</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">React</span><span class="p">.</span><span class="nx">Fragment</span><span class="o">&gt;</span>
+      <span class="o">&lt;</span><span class="nx">ModalVideo</span> <span class="nx">channel</span><span class="o">=</span><span class="dl">'</span><span class="s1">youtube</span><span class="dl">'</span> <span class="nx">autoplay</span> <span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="nx">isOpen</span><span class="p">}</span> <span class="nx">videoId</span><span class="o">=</span><span class="dl">"</span><span class="s2">L61p2uyiMSo</span><span class="dl">"</span> <span class="nx">onClose</span><span class="o">=</span><span class="p">{()</span> <span class="o">=&gt;</span> <span class="nx">setOpen</span><span class="p">(</span><span class="kc">false</span><span class="p">)}</span> <span class="sr">/</span><span class="o">&gt;
+</span>
+      <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">className</span><span class="o">=</span><span class="dl">"</span><span class="s2">btn-primary</span><span class="dl">"</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{()</span><span class="o">=&gt;</span> <span class="nx">setOpen</span><span class="p">(</span><span class="kc">true</span><span class="p">)}</span><span class="o">&gt;</span><span class="nx">VIEW</span> <span class="nx">DEMO</span><span class="o">&lt;</span><span class="nx">/button</span><span class="o">&gt;
+</span>    <span class="o">&lt;</span><span class="nx">/React.Fragment</span><span class="o">&gt;
+</span>  <span class="p">)</span>
+<span class="p">}</span>
+
+<span class="nx">ReactDOM</span><span class="p">.</span><span class="nx">render</span><span class="p">(</span>
+  <span class="o">&lt;</span><span class="nx">App</span> <span class="o">/&gt;</span><span class="p">,</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="dl">'</span><span class="s1">root</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">)</span></code></pre></div>
+
+
+<h3 id="class-implementation">Class Implementation</h3>
+
 <p>change “isOpen” property to open and close the modal-video</p>
 
 <div class="language-js highlighter-rouge"><pre class="highlight"><code><span class="kr">import</span> <span class="nx">React</span> <span class="nx">from</span> <span class="s1">'react'</span>
@@ -83,10 +108,10 @@
 
   <span class="nx">render</span> <span class="p">()</span> <span class="p">{</span>
     <span class="k">return</span> <span class="p">(</span>
-      <span class="o">&lt;</span><span class="sr">div</span><span class="o">&gt;</span>
-        <span class="o">&lt;</span><span class="sr">ModalVideo</span> <span class="nx">channel</span><span class="o">=</span><span class="s1">'youtube'</span> <span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isOpen</span><span class="p">}</span> <span class="nx">videoId</span><span class="o">=</span><span class="s1">'L61p2uyiMSo'</span> onClose={() => this.setState({isOpen: false})} <span class="o">/&gt;</span>
-        <span class="o">&lt;</span><span class="sr">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">openModal</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Open</span><span class="o">&lt;</span><span class="sr">/button</span><span class="nx">&gt;
-</span>      <span class="o">&lt;</span><span class="sr">/div</span><span class="nx">&gt;
+      <span class="o">&lt;</span><span class="nx">React.Fragment</span><span class="o">&gt;</span>
+        <span class="o">&lt;</span><span class="nx">ModalVideo</span> <span class="nx">channel</span><span class="o">=</span><span class="s1">'youtube'</span> <span class="nx">isOpen</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">state</span><span class="p">.</span><span class="nx">isOpen</span><span class="p">}</span> <span class="nx">videoId</span><span class="o">=</span><span class="s1">'L61p2uyiMSo'</span> onClose={() => this.setState({isOpen: false})} <span class="o">/&gt;</span>
+        <span class="o">&lt;</span><span class="nx">button</span> <span class="nx">onClick</span><span class="o">=</span><span class="p">{</span><span class="k">this</span><span class="p">.</span><span class="nx">openModal</span><span class="p">}</span><span class="o">&gt;</span><span class="nx">Open</span><span class="o">&lt;</span><span class="nx">/button</span><span class="nx">&gt;
+</span>      <span class="o">&lt;</span><span class="nx">/React.Fragment</span><span class="nx">&gt;
 </span>    <span class="p">)</span>
   <span class="p">}</span>
 <span class="p">}</span>
