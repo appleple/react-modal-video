@@ -38,9 +38,11 @@ const App = () => {
 	const [isOpen, setOpen] = useState(false)
 
 	return (
-		<ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
+		<React.Fragment>
+			<ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
 
-		<button className="btn-primary" onClick={()=> setOpen(true)}>VIEW DEMO</button>
+			<button className="btn-primary" onClick={()=> setOpen(true)}>VIEW DEMO</button>
+		</React.Fragment>
 	)
 }
 
@@ -73,10 +75,10 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <React.Fragment>
         <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' onClose={() => this.setState({isOpen: false})} />
         <button onClick={this.openModal}>Open</button>
-      </div>
+      </React.Fragment>
     )
   }
 }

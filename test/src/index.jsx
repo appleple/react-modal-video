@@ -21,7 +21,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div>
+      <React.Fragment>
         <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' youtube={{mute:1,autoplay:1}} onClose={() => this.setState({isOpen: false})} />
         <button onClick={this.openModal}>Open YouTube</button>
 
@@ -41,7 +41,7 @@ class App extends React.Component {
         <button onClick={() => this.setState({isOpenCustom: true})}>Open Custom</button>
        
 
-      </div>
+      </React.Fragment>
     )
   }
 }
