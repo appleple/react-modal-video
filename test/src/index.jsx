@@ -10,7 +10,7 @@ class App extends React.Component {
       isOpen: false,
       isOpenYouku: false,
       isOpenCustom:false,
-      customUrl:'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+      customUrl:'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
     }
     this.openModal = this.openModal.bind(this)
   }
