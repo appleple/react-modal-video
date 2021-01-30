@@ -21,7 +21,13 @@ npm install react-modal-video
 
 ## Usage
 
-import sass file to your project
+import css file to your project
+
+```jsx
+import 'node_modules/react-modal-video/css/modal-video.min.css';
+```
+
+OR if your project supports sass, import the following sass file
 
 ```scss
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
