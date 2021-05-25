@@ -37,7 +37,7 @@
     "node-sass": "^4.12.0",
     "np": "^2.18.3",
     "npm-run-all": "^4.0.1",
-    "onchange": "^3.2.1",
+    "onchange": "^3.3.0",
     "power-assert": "^1.4.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
