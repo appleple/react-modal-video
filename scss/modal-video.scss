@@ -60,13 +60,15 @@ $backdrop-color: rgba(0, 0, 0, .5);
 	height: 100%;
 	margin: 0 auto;
 	padding: 0 10px;
-	display: table;
+    display: flex;
+    justify-content: center;
 	box-sizing: border-box;
 }
 
 .modal-video-inner {
-	display: table-cell;
-	vertical-align: middle;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 	width: 100%;
 	height: 100%;
 }

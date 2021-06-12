@@ -7,7 +7,7 @@ export default class ModalVideo extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      modalVideoBodyWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
+      modalVideoWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
     }
     this.closeModal = this.closeModal.bind(this)
     this.updateFocus = this.updateFocus.bind(this)
@@ -72,9 +72,9 @@ export default class ModalVideo extends React.Component {
 
     this.timeout = setTimeout(() => {
       const width = this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth);
-        if (this.state.modalVideoBodyWidth != width) {
+        if (this.state.modalVideoWidth != width) {
           this.setState({
-            modalVideoBodyWidth: width
+            modalVideoWidth: width
           });
         }
     }, 10);
@@ -145,25 +145,25 @@ export default class ModalVideo extends React.Component {
     // Height that fulfill the aspect ratio for maxWidth.
     const videoHeight = maxWidth * (height / width);
 
-    if (maxHeight < videoHeight + 175) { // 175 is the height of the close button.
+    if (maxHeight < videoHeight) {
       // when the height of the video is greater than the height of the window.
       // calculate the width that fulfill the aspect ratio for the height of the window.
 
       // ex: 16:9 aspect ratio
       // 16:9 = width : height
       // → width = 16 / 9 * height
-      return Math.floor(width / height * (maxHeight - 175));
+      return Math.floor(width / height * maxHeight);
     }
 
     return '100%';
   }
 
   render() {
-    let modalVideoBodyStyle = {
-      width: this.state.modalVideoBodyWidth
+    const modalVideoInnerStyle = {
+      width: this.state.modalVideoWidth
     }
 
-    let modalVideoIframeWrapStyle = {
+    const modalVideoIframeWrapStyle = {
       paddingBottom: this.getPadding(this.props.ratio)
     }
 
@@ -180,8 +180,8 @@ export default class ModalVideo extends React.Component {
           return (
             <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
               aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => { this.modal = node; }} onKeyDown={this.updateFocus}>
-              <div className={this.props.classNames.modalVideoBody} style={modalVideoBodyStyle}>
-                <div className={this.props.classNames.modalVideoInner}>
+              <div className={this.props.classNames.modalVideoBody}>
+                <div className={this.props.classNames.modalVideoInner} style={modalVideoInnerStyle}>
                   <div className={this.props.classNames.modalVideoIframeWrap} style={modalVideoIframeWrapStyle}>
                     <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => { this.modalbtn = node; }} onKeyDown={this.updateFocus} />
                     {

@@ -57,12 +57,12 @@ var ModalVideo = function (_React$Component) {
 
     _this.state = {
       isOpen: false,
-      modalVideoBodyWidth: _this.getWidthFulfillAspectRatio(_this.props.ratio, window.innerHeight, window.innerWidth)
+      modalVideoWidth: _this.getWidthFulfillAspectRatio(_this.props.ratio, window.innerHeight, window.innerWidth)
     };
     _this.closeModal = _this.closeModal.bind(_this);
     _this.updateFocus = _this.updateFocus.bind(_this);
 
-    _this.timeout; // used for resize
+    _this.timeout; // used for resizing video.
     return _this;
   }
 
@@ -132,9 +132,9 @@ var ModalVideo = function (_React$Component) {
 
       this.timeout = setTimeout(function () {
         var width = _this2.getWidthFulfillAspectRatio(_this2.props.ratio, window.innerHeight, window.innerWidth);
-        if (_this2.state.modalVideoBodyWidth != width) {
+        if (_this2.state.modalVideoWidth != width) {
           _this2.setState({
-            modalVideoBodyWidth: width
+            modalVideoWidth: width
           });
         }
       }, 10);
@@ -214,15 +214,14 @@ var ModalVideo = function (_React$Component) {
       // Height that fulfill the aspect ratio for maxWidth.
       var videoHeight = maxWidth * (height / width);
 
-      if (maxHeight < videoHeight + 175) {
-        // 175 is the height of the close button.
+      if (maxHeight < videoHeight) {
         // when the height of the video is greater than the height of the window.
         // calculate the width that fulfill the aspect ratio for the height of the window.
 
         // ex: 16:9 aspect ratio
         // 16:9 = width : height
         // → width = 16 / 9 * height
-        return Math.floor(width / height * (maxHeight - 175));
+        return Math.floor(width / height * maxHeight);
       }
 
       return '100%';
@@ -232,8 +231,8 @@ var ModalVideo = function (_React$Component) {
     value: function render() {
       var _this3 = this;
 
-      var modalVideoBodyStyle = {
-        width: this.state.modalVideoBodyWidth
+      var modalVideoInnerStyle = {
+        width: this.state.modalVideoWidth
       };
 
       var modalVideoIframeWrapStyle = {
@@ -251,7 +250,7 @@ var ModalVideo = function (_React$Component) {
         return _react2.default.createElement('div', { className: _this3.props.classNames.modalVideo, tabIndex: '-1', role: 'dialog',
           'aria-label': _this3.props.aria.openMessage, onClick: _this3.closeModal, ref: function ref(node) {
             _this3.modal = node;
-          }, onKeyDown: _this3.updateFocus }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoBody, style: modalVideoBodyStyle }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoInner }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoIframeWrap, style: modalVideoIframeWrapStyle }, _react2.default.createElement('button', { className: _this3.props.classNames.modalVideoCloseBtn, 'aria-label': _this3.props.aria.dismissBtnMessage, ref: function ref(node) {
+          }, onKeyDown: _this3.updateFocus }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoBody }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoInner, style: modalVideoInnerStyle }, _react2.default.createElement('div', { className: _this3.props.classNames.modalVideoIframeWrap, style: modalVideoIframeWrapStyle }, _react2.default.createElement('button', { className: _this3.props.classNames.modalVideoCloseBtn, 'aria-label': _this3.props.aria.dismissBtnMessage, ref: function ref(node) {
             _this3.modalbtn = node;
           }, onKeyDown: _this3.updateFocus }), _this3.props.children || _react2.default.createElement('iframe', { width: '460', height: '230', src: _this3.getVideoUrl(_this3.props, _this3.props.videoId), frameBorder: '0', allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture', allowFullScreen: _this3.props.allowFullScreen, tabIndex: '-1' })))));
       });
