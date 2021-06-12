@@ -6,10 +6,13 @@ export default class ModalVideo extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      isOpen: false
+      isOpen: false,
+      modalVideoBodyWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
     }
     this.closeModal = this.closeModal.bind(this)
     this.updateFocus = this.updateFocus.bind(this)
+
+    this.timeout; // used for resizing video.
   }
 
   openModal () {
@@ -31,10 +34,12 @@ export default class ModalVideo extends React.Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
+    window.addEventListener('resize', this.resizeModalVideoWhenHeightGreaterThanWindowHeight.bind(this));
   }
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.keydownHandler.bind(this));
+    window.removeEventListener('resize', this.resizeModalVideoWhenHeightGreaterThanWindowHeight.bind(this));
   }
 
   static getDerivedStateFromProps(props) {
@@ -57,6 +62,22 @@ export default class ModalVideo extends React.Component {
         this.modal.focus()
       }
     }
+  }
+
+  /**
+   * Resize modal-video-iframe-wrap when window size changed when the height of the video is greater than the height of the window.
+   */
+  resizeModalVideoWhenHeightGreaterThanWindowHeight() {
+    clearTimeout(this.timeout);
+
+    this.timeout = setTimeout(() => {
+      const width = this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth);
+        if (this.state.modalVideoBodyWidth != width) {
+          this.setState({
+            modalVideoBodyWidth: width
+          });
+        }
+    }, 10);
   }
 
   getQueryString (obj) {
@@ -106,8 +127,43 @@ export default class ModalVideo extends React.Component {
     return padding + '%'
   }
 
+  /**
+   * Calculate the width of the video fulfill aspect ratio.
+   * When the height of the video is greater than the height of the window,
+   * this function return the width that fulfill the aspect ratio for the height of the window.
+   * In other cases, this function return '100%'(the height relative to the width is determined by css).
+   * 
+   * @param string ratio
+   * @param number maxWidth
+   * @returns number | '100%'
+   */
+  getWidthFulfillAspectRatio(ratio, maxHeight, maxWidth) {
+    const arr = ratio.split(':');
+    const width = Number(arr[0]);
+    const height = Number(arr[1]);
+
+    // Height that fulfill the aspect ratio for maxWidth.
+    const videoHeight = maxWidth * (height / width);
+
+    if (maxHeight < videoHeight + 175) { // 175 is the height of the close button.
+      // when the height of the video is greater than the height of the window.
+      // calculate the width that fulfill the aspect ratio for the height of the window.
+
+      // ex: 16:9 aspect ratio
+      // 16:9 = width : height
+      // → width = 16 / 9 * height
+      return Math.floor(width / height * (maxHeight - 175));
+    }
+
+    return '100%';
+  }
+
   render() {
-    const style = {
+    let modalVideoBodyStyle = {
+      width: this.state.modalVideoBodyWidth
+    }
+
+    let modalVideoIframeWrapStyle = {
       paddingBottom: this.getPadding(this.props.ratio)
     }
 
@@ -124,9 +180,9 @@ export default class ModalVideo extends React.Component {
           return (
             <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
               aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => { this.modal = node; }} onKeyDown={this.updateFocus}>
-              <div className={this.props.classNames.modalVideoBody}>
+              <div className={this.props.classNames.modalVideoBody} style={modalVideoBodyStyle}>
                 <div className={this.props.classNames.modalVideoInner}>
-                  <div className={this.props.classNames.modalVideoIframeWrap} style={style}>
+                  <div className={this.props.classNames.modalVideoIframeWrap} style={modalVideoIframeWrapStyle}>
                     <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => { this.modalbtn = node; }} onKeyDown={this.updateFocus} />
                     {
                       this.props.children ||
