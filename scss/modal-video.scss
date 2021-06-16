@@ -60,19 +60,22 @@ $backdrop-color: rgba(0, 0, 0, .5);
 	height: 100%;
 	margin: 0 auto;
 	padding: 0 10px;
-	display: table;
+    display: flex;
+    justify-content: center;
 	box-sizing: border-box;
-
-    @media (orientation: landscape) and (max-height: 600px){
-        padding: 0 100px;
-    }
 }
 
 .modal-video-inner {
-	display: table-cell;
-	vertical-align: middle;
+	display: flex;
+    justify-content: center;
+    align-items: center;
 	width: 100%;
 	height: 100%;
+
+    @media (orientation: landscape) {
+        padding: 10px 60px;
+        box-sizing: border-box;
+    }
 }
 
 .modal-video-movie-wrap {
@@ -115,6 +118,11 @@ $backdrop-color: rgba(0, 0, 0, .5);
 	overflow: hidden;
 	border: none;
 	background: transparent;
+
+    @media (orientation: landscape) {
+        top: 0;
+        right: -45px;
+    }
 
 	&:before {
 		transform: rotate(45deg);
