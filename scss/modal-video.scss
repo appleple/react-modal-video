@@ -63,6 +63,10 @@ $backdrop-color: rgba(0, 0, 0, .5);
     display: flex;
     justify-content: center;
 	box-sizing: border-box;
+
+    @media (orientation: landscape) and (max-height: 600px){
+        padding: 0 100px;
+    }
 }
 
 .modal-video-inner {

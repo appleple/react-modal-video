@@ -260,7 +260,7 @@ ModalVideo.defaultProps = {
     modalVideoCloseBtn: 'modal-video-close-btn'
   },
   aria: {
-    openMessage: 'You just openned the modal video',
+    openMessage: 'You just opened the modal video',
     dismissBtnMessage: 'Close the modal by clicking here'
   }
 }

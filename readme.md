@@ -311,7 +311,7 @@ ReactDOM.render(
 	<tr>
 		<td rowspan="2">aria</td>
 		<td>openMessage</td>
-		<td>'You just openned the modal video'</td>
+		<td>'You just opened the modal video'</td>
 	</tr>
 	<tr>
 		<td>dismissBtnMessage</td>
