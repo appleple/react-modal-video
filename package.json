@@ -20,6 +20,10 @@
     "start": "npm-run-all -p watch:js watch:sass sync",
     "deploy": "np --no-cleanup"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/appleple/react-modal-video.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-preset-env": "^1.7.0",
