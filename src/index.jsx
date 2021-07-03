@@ -7,7 +7,7 @@ export default class ModalVideo extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      modalVideoWidth: '0'
+      modalVideoWidth: '100%'
     }
     this.closeModal = this.closeModal.bind(this)
     this.updateFocus = this.updateFocus.bind(this)
