@@ -7,7 +7,7 @@ export default class ModalVideo extends React.Component {
     super(props)
     this.state = {
       isOpen: false,
-      modalVideoWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
+      modalVideoWidth: '100%'
     }
     this.closeModal = this.closeModal.bind(this)
     this.updateFocus = this.updateFocus.bind(this)
@@ -35,6 +35,9 @@ export default class ModalVideo extends React.Component {
   componentDidMount() {
     document.addEventListener('keydown', this.keydownHandler.bind(this));
     window.addEventListener('resize', this.resizeModalVideoWhenHeightGreaterThanWindowHeight.bind(this));
+    this.setState({
+      modalVideoWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
+    });
   }
 
   componentWillUnmount() {

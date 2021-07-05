@@ -57,7 +57,7 @@ var ModalVideo = function (_React$Component) {
 
     _this.state = {
       isOpen: false,
-      modalVideoWidth: _this.getWidthFulfillAspectRatio(_this.props.ratio, window.innerHeight, window.innerWidth)
+      modalVideoWidth: '100%'
     };
     _this.closeModal = _this.closeModal.bind(_this);
     _this.updateFocus = _this.updateFocus.bind(_this);
@@ -91,6 +91,9 @@ var ModalVideo = function (_React$Component) {
     value: function componentDidMount() {
       document.addEventListener('keydown', this.keydownHandler.bind(this));
       window.addEventListener('resize', this.resizeModalVideoWhenHeightGreaterThanWindowHeight.bind(this));
+      this.setState({
+        modalVideoWidth: this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth)
+      });
     }
   }, {
     key: 'componentWillUnmount',
