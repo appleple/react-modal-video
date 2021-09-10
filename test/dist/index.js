@@ -282,7 +282,7 @@ ModalVideo.defaultProps = {
     enablejsapi: 0,
     end: null,
     fs: 1,
-    h1: null,
+    hl: null,
     iv_load_policy: 1,
     list: null,
     listType: null,
@@ -31229,7 +31229,7 @@ var App = function (_React$Component) {
             } },
           'Open youku'
         ),
-        _react2.default.createElement(_index2.default, { channel: 'custom', isOpen: this.state.isOpenCustom, url: this.state.customUrl, autoplay: 1, onClose: function onClose() {
+        _react2.default.createElement(_index2.default, { channel: 'custom', isOpen: this.state.isOpenCustom, url: this.state.customUrl, onClose: function onClose() {
             return _this2.setState({ isOpenCustom: false });
           } }),
         _react2.default.createElement(
