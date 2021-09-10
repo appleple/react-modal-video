@@ -28,7 +28,6 @@ class App extends React.Component {
         <ModalVideo channel='vimeo' isOpen={this.state.isOpenVimeo} videoId='336257407' onClose={() => this.setState({isOpenVimeo: false})} />
         <button onClick={() => this.setState({isOpenVimeo: true})}>Open Vimeo</button>
 
-        
         <ModalVideo
             channel='youku'
             isOpen={this.state.isOpenYouku}
@@ -37,10 +36,8 @@ class App extends React.Component {
         />
         <button onClick={() => this.setState({isOpenYouku: true})}>Open youku</button>
         
-        <ModalVideo channel='custom' isOpen={this.state.isOpenCustom} url={this.state.customUrl} autoplay={1} onClose={() => this.setState({isOpenCustom: false})} />
+        <ModalVideo channel='custom' isOpen={this.state.isOpenCustom} url={this.state.customUrl} onClose={() => this.setState({isOpenCustom: false})} />
         <button onClick={() => this.setState({isOpenCustom: true})}>Open Custom</button>
-       
-
       </React.Fragment>
     )
   }

@@ -213,7 +213,7 @@ ModalVideo.defaultProps = {
     enablejsapi: 0,
     end: null,
     fs: 1,
-    h1: null,
+    hl: null,
     iv_load_policy: 1,
     list: null,
     listType: null,
