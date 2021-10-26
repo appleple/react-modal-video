@@ -269,7 +269,7 @@ ReactDOM.render(
 	<tr>
         <td rowspan="1">custom</td>
         <td>url</td>
-        <td>MP4 URL / iframe URL</td>
+        <td>MP4 URL</td>
     </tr>
 	<tr>
 		<td colspan="2">ratio</td>
