@@ -1,6 +1,6 @@
 {
   "name": "react-modal-video",
-  "version": "1.2.8",
+  "version": "1.2.9",
   "main": "lib/index.js",
   "description": "Modal Video Viewer",
   "author": "appleple",
