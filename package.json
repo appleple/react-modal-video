@@ -1,19 +1,19 @@
 {
   "name": "react-modal-video",
-  "version": "1.2.9",
+  "version": "2.0.0",
   "main": "lib/index.js",
   "description": "Modal Video Viewer",
   "author": "appleple",
   "license": "MIT",
   "scripts": {
-    "test": "eslint ./src/core/index.js --fix",
+    "test": "eslint ./src/index.jsx --fix",
     "build:js": "npm-run-all -p build:lib build:test",
     "build:lib": "npm run babel",
     "build:test": "browserify ./test/src/index.jsx -t babelify -o ./test/dist/index.js",
     "build:sass": "npm-run-all -p sass sass:min",
     "babel": "babel src --out-dir lib",
-    "sass": "node-sass ./scss/modal-video.scss ./css/modal-video.css --output-style expanded",
-    "sass:min": "node-sass ./scss/modal-video.scss ./css/modal-video.min.css --output-style compressed",
+    "sass": "sass ./scss/modal-video.scss ./css/modal-video.css --style expanded",
+    "sass:min": "sass ./scss/modal-video.scss ./css/modal-video.min.css --style compressed",
     "watch:js": "onchange \"src/\" -- npm run build:js",
     "watch:sass": "onchange \"scss\" -- npm run build:sass",
     "sync": "browser-sync start --server './' --files './js/*.js' './css/*.css' --startPath '/test/index.html'",
@@ -25,35 +25,31 @@
     "url": "https://github.com/appleple/react-modal-video.git"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-es2015": "^6.18.0",
-    "babel-preset-react": "^6.3.13",
-    "babelify": "^7.3.0",
-    "browser-sync": "^2.23.6",
-    "browserify": "^13.1.1",
-    "eslint": "^4.18.2",
-    "eslint-config-airbnb": "^13.0.0",
-    "eslint-config-airbnb-base": "^11.0.1",
-    "eslint-plugin-import": "^2.2.0",
-    "mocha": "^3.3.0",
-    "nightmare": "^2.8.1",
-    "node-sass": "^4.12.0",
-    "np": "^2.18.3",
-    "npm-run-all": "^4.0.1",
-    "onchange": "^3.3.0",
-    "power-assert": "^1.4.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
-    "stringify": "^5.1.0",
-    "uglify-js": "^2.8.22",
-    "watchify": "^3.9.0"
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.18.5"
   },
   "dependencies": {
-    "react-transition-group": "^2.2.1"
+    "babel-preset-react": "^6.24.1",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.27.10",
+    "browserify": "^17.0.0",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "mocha": "^10.0.0",
+    "np": "^7.6.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "power-assert": "^1.6.1",
+    "react-transition-group": "^4.4.2",
+    "sass": "^1.52.3",
+    "stringify": "^5.2.0",
+    "uglify-js": "^3.16.0",
+    "watchify": "^4.0.0"
   },
   "peerDependencies": {
-    "react": "^16.2.0 || ^17.0.0",
-    "react-dom": "^16.2.0 || ^17.0.0"
+    "react": "^17.0.0 || ^18.2.0",
+    "react-dom": "^17.0.0 || ^18.2.0"
   }
 }
