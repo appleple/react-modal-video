@@ -12,12 +12,13 @@
     "build:test": "browserify ./test/src/index.jsx -t babelify -o ./test/dist/index.js",
     "build:sass": "npm-run-all -p sass sass:min",
     "babel": "babel src --out-dir lib",
-    "sass": "sass ./scss/modal-video.scss ./css/modal-video.css --style expanded",
-    "sass:min": "sass ./scss/modal-video.scss ./css/modal-video.min.css --style compressed",
+    "sass": "sass ./scss/modal-video.scss ./css/modal-video.css --style expanded --no-source-map",
+    "sass:min": "sass ./scss/modal-video.scss ./css/modal-video.min.css --style compressed --no-source-map",
     "watch:js": "onchange \"src/\" -- npm run build:js",
     "watch:sass": "onchange \"scss\" -- npm run build:sass",
-    "sync": "browser-sync start --server './' --files './js/*.js' './css/*.css' --startPath '/test/index.html'",
-    "start": "npm-run-all -p watch:js watch:sass sync",
+    "watch:test": "onchange \"test/src\" -- npm run build:test",
+    "sync": "browser-sync start --server './' --files './test/dist/*.js' './css/*.css' --startPath '/test/index.html'",
+    "start": "npm-run-all -p watch:js watch:sass watch:test sync",
     "deploy": "np --no-cleanup"
   },
   "repository": {
@@ -26,13 +27,15 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.18.5"
+    "@babel/core": "^7.18.5",
+    "@babel/preset-env": "^7.20.2",
+    "@babel/preset-react": "^7.18.6"
   },
   "dependencies": {
-    "babel-preset-react": "^6.24.1",
     "babelify": "^10.0.0",
     "browser-sync": "^2.27.10",
     "browserify": "^17.0.0",
+    "core-js": "^3.27.2",
     "eslint": "^8.17.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
