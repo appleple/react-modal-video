@@ -1,4 +1,5 @@
 # react-modal-video
+
 React Modal Video Component
 
 ## Features
@@ -9,7 +10,8 @@ React Modal Video Component
 - Rich options for youtube API and Vimeo API
 
 ## Demo
-[http://rawgit.com/appleple/react-modal-video/master/test/](http://rawgit.com/appleple/react-modal-video/master/test/)
+
+[https://unpkg.com/react-modal-video@latest/test/index.html](https://unpkg.com/react-modal-video@latest/test/index.html)
 
 ## Install
 
@@ -26,67 +28,69 @@ import sass file to your project
 ```scss
 @import 'node_modules/react-modal-video/scss/modal-video.scss';
 ```
+
 ### Functional Implementation with Hooks
 
 ```jsx
-import React,{useState} from 'react'
-import ReactDOM from 'react-dom'
-import ModalVideo from 'react-modal-video'
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
+import ModalVideo from 'react-modal-video';
 
 const App = () => {
+  const [isOpen, setOpen] = useState(false);
 
-	const [isOpen, setOpen] = useState(false)
+  return (
+    <React.Fragment>
+      <ModalVideo channel="youtube" autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
 
-	return (
-		<React.Fragment>
-			<ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId="L61p2uyiMSo" onClose={() => setOpen(false)} />
+      <button className="btn-primary" onClick={() => setOpen(true)}>
+        VIEW DEMO
+      </button>
+    </React.Fragment>
+  );
+};
 
-			<button className="btn-primary" onClick={()=> setOpen(true)}>VIEW DEMO</button>
-		</React.Fragment>
-	)
-}
-
-ReactDOM.render(
-  <App />,
-    document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
+
 ### Class Implementation
+
 change "isOpen" property to open and close the modal-video
 
 ```jsx
-import React from 'react'
-import ReactDOM from 'react-dom'
-import ModalVideo from 'react-modal-video'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import ModalVideo from 'react-modal-video';
 
 class App extends React.Component {
-
-  constructor () {
-    super()
+  constructor() {
+    super();
     this.state = {
-      isOpen: false
-    }
-    this.openModal = this.openModal.bind(this)
+      isOpen: false,
+    };
+    this.openModal = this.openModal.bind(this);
   }
 
-  openModal () {
-    this.setState({isOpen: true})
+  openModal() {
+    this.setState({ isOpen: true });
   }
 
-  render () {
+  render() {
     return (
       <React.Fragment>
-        <ModalVideo channel='youtube' isOpen={this.state.isOpen} videoId='L61p2uyiMSo' onClose={() => this.setState({isOpen: false})} />
+        <ModalVideo
+          channel="youtube"
+          isOpen={this.state.isOpen}
+          videoId="L61p2uyiMSo"
+          onClose={() => this.setState({ isOpen: false })}
+        />
         <button onClick={this.openModal}>Open</button>
       </React.Fragment>
-    )
+    );
   }
 }
 
-ReactDOM.render(
-  <App />,
-    document.getElementById('root')
-)
+ReactDOM.render(<App />, document.getElementById('root'));
 ```
 
 ## Options
@@ -319,13 +323,13 @@ ReactDOM.render(
 	</tr>
 </tbody></table>
 
-
 ## FAQ
+
 ### How to track YouTube videos playing in modal-video by GA4?</h3>
 
 1. Enable JS API. Turn `enablejsapi` property to `1`.
 2. Load YouTube Iframe API. Add `<script src="https://www.youtube.com/iframe_api"></script>` in HTML file.
 
-
 ## Licence
+
 [MIT](https://github.com/appleple/modal-video.js/blob/master/LICENSE)
