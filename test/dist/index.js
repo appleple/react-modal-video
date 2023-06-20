@@ -235,6 +235,7 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
           }
         }
       }
+      console.log(url);
       return url.substr(0, url.length - 1);
     }
   }, {
@@ -259,7 +260,9 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
     key: "getVideoUrl",
     value: function getVideoUrl(opt, videoId) {
       if (opt.channel === 'youtube') {
-        return this.getYoutubeUrl(opt.youtube, videoId);
+        var url = this.getYoutubeUrl(opt.youtube, videoId);
+        console.log(url);
+        return url;
       } else if (opt.channel === 'vimeo') {
         return this.getVimeoUrl(opt.vimeo, videoId);
       } else if (opt.channel === 'youku') {
@@ -283,7 +286,7 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
      * When the height of the video is greater than the height of the window,
      * this function return the width that fulfill the aspect ratio for the height of the window.
      * In other cases, this function return '100%'(the height relative to the width is determined by css).
-     *
+     * 
      * @param string ratio
      * @param number maxWidth
      * @returns number | '100%'
@@ -398,7 +401,7 @@ ModalVideo.defaultProps = {
     start: 0,
     wmode: 'transparent',
     theme: 'dark',
-    mute: 0
+    mute: 1
   },
   ratio: '16:9',
   vimeo: {
@@ -39658,8 +39661,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         isOpen: this.state.isOpen,
         videoId: "L61p2uyiMSo",
         youtube: {
-          mute: 1,
-          autoplay: 1
+          mute: 0,
+          autoplay: 0
         },
         onClose: function onClose() {
           return _this2.setState({

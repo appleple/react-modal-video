@@ -25,7 +25,7 @@ class App extends React.Component {
           channel="youtube"
           isOpen={this.state.isOpen}
           videoId="L61p2uyiMSo"
-          youtube={{ mute: 1, autoplay: 1 }}
+          youtube={{ mute: 0, autoplay: 0 }}
           onClose={() => this.setState({ isOpen: false })}
         />
         <button onClick={this.openModal}>Open YouTube</button>

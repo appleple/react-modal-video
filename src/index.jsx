@@ -92,6 +92,7 @@ export default class ModalVideo extends React.Component {
         }
       }
     }
+    console.log(url)
     return url.substr(0, url.length - 1)
   }
 
@@ -112,7 +113,9 @@ export default class ModalVideo extends React.Component {
 
   getVideoUrl(opt, videoId) {
     if (opt.channel === 'youtube') {
-      return this.getYoutubeUrl(opt.youtube, videoId)
+      const url = this.getYoutubeUrl(opt.youtube, videoId)
+      console.log(url)
+      return url
     } else if (opt.channel === 'vimeo') {
       return this.getVimeoUrl(opt.vimeo, videoId)
     } else if (opt.channel === 'youku') {
@@ -227,7 +230,7 @@ ModalVideo.defaultProps = {
     start: 0,
     wmode: 'transparent',
     theme: 'dark',
-    mute: 0
+    mute: 1
   },
   ratio: '16:9',
   vimeo: {
