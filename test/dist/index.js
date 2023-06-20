@@ -352,7 +352,7 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
             _this3.modalbtn = node;
           },
           onKeyDown: _this3.updateFocus,
-          tabIndex: 3
+          tabIndex: 2
         }), _this3.props.children || /*#__PURE__*/_react.default.createElement("iframe", {
           width: "460",
           height: "230",
@@ -360,7 +360,7 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
           frameBorder: "0",
           allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
           allowFullScreen: _this3.props.allowFullScreen,
-          tabIndex: 2
+          tabIndex: 1
         })))));
       });
     }
