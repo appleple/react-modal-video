@@ -330,7 +330,6 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
         }
         return /*#__PURE__*/_react.default.createElement("div", {
           className: _this3.props.classNames.modalVideo,
-          tabIndex: "-1",
           role: "dialog",
           "aria-label": _this3.props.aria.openMessage,
           onClick: _this3.closeModal,
@@ -352,7 +351,8 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
           ref: function ref(node) {
             _this3.modalbtn = node;
           },
-          onKeyDown: _this3.updateFocus
+          onKeyDown: _this3.updateFocus,
+          tabIndex: 3
         }), _this3.props.children || /*#__PURE__*/_react.default.createElement("iframe", {
           width: "460",
           height: "230",
@@ -360,7 +360,7 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
           frameBorder: "0",
           allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
           allowFullScreen: _this3.props.allowFullScreen,
-          tabIndex: "-1"
+          tabIndex: 2
         })))));
       });
     }
