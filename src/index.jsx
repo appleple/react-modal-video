@@ -55,13 +55,17 @@ export default class ModalVideo extends React.Component {
   }
 
   updateFocus(e) {
-    if (e.keyCode === 9) {
-      e.preventDefault();
-      e.stopPropagation();
-      if (this.modal === document.activeElement) {
-        this.modalbtn.focus();
-      } else {
-        this.modal.focus();
+    if (this.state.isOpen) {
+    e.preventDefault();
+    e.stopPropagation();
+
+      if (e.keyCode === 9) {
+        if (this.modal === document.activeElement) {
+          this.modaliflame.focus();
+        }
+        else if (this.modalbtn === document.activeElement) {
+          this.modal.focus(); 
+        }
       }
     }
   }
@@ -91,7 +95,6 @@ export default class ModalVideo extends React.Component {
         }
       }
     }
-    console.log(url);
     return url.substr(0, url.length - 1);
   }
 
@@ -112,9 +115,7 @@ export default class ModalVideo extends React.Component {
 
   getVideoUrl(opt, videoId) {
     if (opt.channel === 'youtube') {
-      const url = this.getYoutubeUrl(opt.youtube, videoId);
-      console.log(url);
-      return url;
+      return this.getYoutubeUrl(opt.youtube, videoId);
     } if (opt.channel === 'vimeo') {
       return this.getVimeoUrl(opt.vimeo, videoId);
     } if (opt.channel === 'youku') {
@@ -183,16 +184,29 @@ export default class ModalVideo extends React.Component {
           }
 
           return (
-            <div className={this.props.classNames.modalVideo} role='dialog'
-              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={(node) => { this.modal = node; }} onKeyDown={this.updateFocus}>
+            <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog' area-modal="true"
+              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={(node) => {this.modal = node; }} onKeyDown={this.updateFocus}>
               <div className={this.props.classNames.modalVideoBody}>
                 <div className={this.props.classNames.modalVideoInner} style={modalVideoInnerStyle}>
                   <div className={this.props.classNames.modalVideoIframeWrap} style={modalVideoIframeWrapStyle}>
-                    <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={(node) => { this.modalbtn = node; }} onKeyDown={this.updateFocus} tabIndex={2} />
                     {
                       this.props.children
-                      || <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'} allowFullScreen={this.props.allowFullScreen} tabIndex={1} />
+                      || <iframe
+                          width='460'
+                          height='230'
+                          src={this.getVideoUrl(this.props, this.props.videoId)}
+                          frameBorder='0'
+                          allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'}
+                          allowFullScreen={this.props.allowFullScreen}
+                          onKeyDown={this.updateFocus}
+                          ref={(node) => {this.modaliflame = node; }}
+                          tabIndex='-1' />
                     }
+                    <button
+                      className={this.props.classNames.modalVideoCloseBtn}
+                      aria-label={this.props.aria.dismissBtnMessage}
+                      ref={(node) => { this.modalbtn = node; }}
+                      onKeyDown={this.updateFocus} />
                   </div>
                 </div>
               </div>
@@ -229,7 +243,7 @@ ModalVideo.defaultProps = {
     start: 0,
     wmode: 'transparent',
     theme: 'dark',
-    mute: 1
+    mute: 0
   },
   ratio: '16:9',
   vimeo: {
