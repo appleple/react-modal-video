@@ -1,26 +1,25 @@
-import React from 'react'
+import React from 'react';
 import CSSTransition from 'react-transition-group/CSSTransition';
 
 export default class ModalVideo extends React.Component {
-
-  constructor (props) {
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
       isOpen: false,
       modalVideoWidth: '100%'
-    }
-    this.closeModal = this.closeModal.bind(this)
-    this.updateFocus = this.updateFocus.bind(this)
+    };
+    this.closeModal = this.closeModal.bind(this);
+    this.updateFocus = this.updateFocus.bind(this);
 
     this.timeout; // used for resizing video.
   }
 
-  openModal () {
-    this.setState({isOpen: true})
+  openModal() {
+    this.setState({ isOpen: true });
   }
 
-  closeModal () {
-    this.setState({isOpen: false})
+  closeModal() {
+    this.setState({ isOpen: false });
     if (typeof this.props.onClose === 'function') {
       this.props.onClose();
     }
@@ -49,20 +48,24 @@ export default class ModalVideo extends React.Component {
     return { isOpen: props.isOpen };
   }
 
-  componentDidUpdate () {
+  componentDidUpdate() {
     if (this.state.isOpen && this.modal) {
       this.modal.focus();
     }
   }
 
-  updateFocus (e) {
-    if (e.keyCode === 9) {
-      e.preventDefault()
-      e.stopPropagation()
-      if (this.modal === document.activeElement) {
-        this.modalbtn.focus()
-      } else {
-        this.modal.focus()
+  updateFocus(e) {
+    if (this.state.isOpen) {
+    e.preventDefault();
+    e.stopPropagation();
+
+      if (e.keyCode === 9) {
+        if (this.modal === document.activeElement) {
+          this.modaliflame.focus();
+        }
+        else if (this.modalbtn === document.activeElement) {
+          this.modal.focus(); 
+        }
       }
     }
   }
@@ -75,59 +78,59 @@ export default class ModalVideo extends React.Component {
 
     this.timeout = setTimeout(() => {
       const width = this.getWidthFulfillAspectRatio(this.props.ratio, window.innerHeight, window.innerWidth);
-        if (this.state.modalVideoWidth != width) {
-          this.setState({
-            modalVideoWidth: width
-          });
-        }
+      if (this.state.modalVideoWidth != width) {
+        this.setState({
+          modalVideoWidth: width
+        });
+      }
     }, 10);
   }
 
-  getQueryString (obj) {
-    let url = ''
-    for (var key in obj) {
+  getQueryString(obj) {
+    let url = '';
+    for (const key in obj) {
       if (obj.hasOwnProperty(key)) {
         if (obj[key] !== null) {
-          url += key + '=' + obj[key] + '&'
+          url += `${key}=${obj[key]}&`;
         }
       }
     }
-    return url.substr(0, url.length - 1)
+    return url.substr(0, url.length - 1);
   }
 
   getYoutubeUrl(youtube, videoId) {
-    const query = this.getQueryString(youtube)
-    return '//www.youtube.com/embed/' + videoId + '?' + query
+    const query = this.getQueryString(youtube);
+    return `//www.youtube.com/embed/${videoId}?${query}`;
   }
 
   getVimeoUrl(vimeo, videoId) {
-    const query = this.getQueryString(vimeo)
-    return '//player.vimeo.com/video/' + videoId + '?' + query
+    const query = this.getQueryString(vimeo);
+    return `//player.vimeo.com/video/${videoId}?${query}`;
   }
 
   getYoukuUrl(youku, videoId) {
-    const query = this.getQueryString(youku)
-    return '//player.youku.com/embed/' + videoId + '?' + query
+    const query = this.getQueryString(youku);
+    return `//player.youku.com/embed/${videoId}?${query}`;
   }
 
   getVideoUrl(opt, videoId) {
     if (opt.channel === 'youtube') {
-      return this.getYoutubeUrl(opt.youtube, videoId)
-    } else if (opt.channel === 'vimeo') {
-      return this.getVimeoUrl(opt.vimeo, videoId)
-    } else if (opt.channel === 'youku') {
-      return this.getYoukuUrl(opt.youku, videoId)
-    } else if (opt.channel === 'custom') {
-      return opt.url
+      return this.getYoutubeUrl(opt.youtube, videoId);
+    } if (opt.channel === 'vimeo') {
+      return this.getVimeoUrl(opt.vimeo, videoId);
+    } if (opt.channel === 'youku') {
+      return this.getYoukuUrl(opt.youku, videoId);
+    } if (opt.channel === 'custom') {
+      return opt.url;
     }
   }
 
   getPadding(ratio) {
-    const arr = ratio.split(':')
-    const width = Number(arr[0])
-    const height = Number(arr[1])
-    const padding = height * 100 / width
-    return padding + '%'
+    const arr = ratio.split(':');
+    const width = Number(arr[0]);
+    const height = Number(arr[1]);
+    const padding = height * 100 / width;
+    return `${padding}%`;
   }
 
   /**
@@ -135,7 +138,7 @@ export default class ModalVideo extends React.Component {
    * When the height of the video is greater than the height of the window,
    * this function return the width that fulfill the aspect ratio for the height of the window.
    * In other cases, this function return '100%'(the height relative to the width is determined by css).
-   * 
+   *
    * @param string ratio
    * @param number maxWidth
    * @returns number | '100%'
@@ -164,11 +167,11 @@ export default class ModalVideo extends React.Component {
   render() {
     const modalVideoInnerStyle = {
       width: this.state.modalVideoWidth
-    }
+    };
 
     const modalVideoIframeWrapStyle = {
       paddingBottom: this.getPadding(this.props.ratio)
-    }
+    };
 
     return (
       <CSSTransition
@@ -181,23 +184,36 @@ export default class ModalVideo extends React.Component {
           }
 
           return (
-            <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog'
-              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={node => { this.modal = node; }} onKeyDown={this.updateFocus}>
+            <div className={this.props.classNames.modalVideo} tabIndex='-1' role='dialog' area-modal="true"
+              aria-label={this.props.aria.openMessage} onClick={this.closeModal} ref={(node) => {this.modal = node; }} onKeyDown={this.updateFocus}>
               <div className={this.props.classNames.modalVideoBody}>
                 <div className={this.props.classNames.modalVideoInner} style={modalVideoInnerStyle}>
                   <div className={this.props.classNames.modalVideoIframeWrap} style={modalVideoIframeWrapStyle}>
-                    <button className={this.props.classNames.modalVideoCloseBtn} aria-label={this.props.aria.dismissBtnMessage} ref={node => { this.modalbtn = node; }} onKeyDown={this.updateFocus} />
                     {
-                      this.props.children ||
-                      <iframe width='460' height='230' src={this.getVideoUrl(this.props, this.props.videoId)} frameBorder='0' allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'} allowFullScreen={this.props.allowFullScreen} tabIndex='-1' />
+                      this.props.children
+                      || <iframe
+                          width='460'
+                          height='230'
+                          src={this.getVideoUrl(this.props, this.props.videoId)}
+                          frameBorder='0'
+                          allow={'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'}
+                          allowFullScreen={this.props.allowFullScreen}
+                          onKeyDown={this.updateFocus}
+                          ref={(node) => {this.modaliflame = node; }}
+                          tabIndex='-1' />
                     }
+                    <button
+                      className={this.props.classNames.modalVideoCloseBtn}
+                      aria-label={this.props.aria.dismissBtnMessage}
+                      ref={(node) => { this.modalbtn = node; }}
+                      onKeyDown={this.updateFocus} />
                   </div>
                 </div>
               </div>
-            </div>)
+            </div>);
         }}
       </CSSTransition>
-    )
+    );
   }
 }
 
@@ -266,4 +282,4 @@ ModalVideo.defaultProps = {
     openMessage: 'You just opened the modal video',
     dismissBtnMessage: 'Close the modal by clicking here'
   }
-}
+};

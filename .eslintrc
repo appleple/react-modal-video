@@ -1,15 +1,19 @@
 {
-  "extends": [
-    # "airbnb-base"
-  ],
   "env": {
     "browser": true
   },
   "globals": {
     "document": true,
-    "window": true,
+    "window": true
   },
   "rules":{
     "comma-dangle":0
+  },
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2015,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
