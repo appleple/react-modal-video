@@ -203,7 +203,7 @@ ReactDOM.render(<App />, document.getElementById('root'));
 	</tr>
 	<tr>
 		<td>mute</td>
-		<td>1</td>
+		<td>0</td>
 	</tr>
 	<tr>
 		<td rowspan="15">vimeo</td>
