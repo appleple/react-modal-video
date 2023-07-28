@@ -26,7 +26,7 @@ export default class ModalVideo extends React.Component {
   }
 
   keydownHandler(e) {
-    if (e.keyCode === 27) {
+    if (e.code === 'Escape') {
       this.closeModal();
     }
   }
@@ -56,7 +56,7 @@ export default class ModalVideo extends React.Component {
 
   updateFocus(e) {
     if (this.state.isOpen) {
-      if (e.keyCode === 9) {
+      if (e.code === 'Tab') {
         e.preventDefault();
         e.stopPropagation();
 

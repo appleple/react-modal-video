@@ -334,14 +334,6 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
       return '100%';
     }
   }, {
-    key: "handleLoadIframe",
-    value: function handleLoadIframe(e) {
-      var iframe = e.target;
-      iframe.contentWindow.addEventListener('keydown', function (e) {
-        console.log(e.code);
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -384,7 +376,6 @@ var ModalVideo = /*#__PURE__*/function (_React$Component) {
           frameBorder: "0",
           allow: 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture',
           allowFullScreen: _this3.props.allowFullScreen,
-          onLoad: _this3.handleLoadIframe,
           onKeyDown: _this3.updateFocus,
           ref: function ref(node) {
             _this3.modaliflame = node;
