@@ -56,10 +56,10 @@ export default class ModalVideo extends React.Component {
 
   updateFocus(e) {
     if (this.state.isOpen) {
-    e.preventDefault();
-    e.stopPropagation();
-
       if (e.keyCode === 9) {
+        e.preventDefault();
+        e.stopPropagation();
+
         if (this.modal === document.activeElement) {
           this.modaliflame.focus();
         }
