@@ -44,7 +44,6 @@
   },
   "dependencies": {
     "core-js": "^3.27.2",
-    "stringify": "^5.2.0",
     "react-transition-group": "^4.4.2"
   },
   "peerDependencies": {
